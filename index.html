@@ -3,140 +3,174 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ClearWeb — A modern website for your practice, built before you pay</title>
+<title>ClearWeb · A modern website for your practice, built before you pay</title>
 <meta name="description" content="ClearWeb rebuilds outdated dental and local-business websites. We build your new site first, you see it live, and you only move forward if you love it.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d4ed8'/%3E%3Cpath d='M9 20.5c1.6 1.4 3.5 2 5.4 1.6 2.6-.5 3.9-2.6 6.2-2.6 1.4 0 2.1.5 2.4.8' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='22' cy='11' r='2.3' fill='white'/%3E%3C/svg%3E">
-<meta property="og:title" content="ClearWeb — A modern website, built before you pay">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.55' stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%230ea5a4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M21.5 11A8 8 0 1 0 21.5 21' fill='none' stroke='white' stroke-width='3.1' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='16' r='2.3' fill='white'/%3E%3C/svg%3E">
+<meta property="og:title" content="ClearWeb · A modern website, built before you pay">
 <meta property="og:description" content="We rebuild your outdated website, you see it live first, and you only go ahead if you love it.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0e1726; --ink-2:#3a4658; --line:#e6e9ef; --bg:#ffffff; --bg-2:#f6f8fc;
-  --brand:#1d4ed8; --brand-2:#2563eb; --brand-soft:#eef3ff; --accent:#0ea5a4;
+  --ink:#0e1726; --ink-2:#41506a; --line:#e6e9ef; --bg:#ffffff; --bg-2:#f6f8fc;
+  --brand:#2563eb; --brand-d:#1d4ed8; --indigo:#4f46e5; --teal:#0ea5a4; --brand-soft:#eef3ff;
   --radius:16px; --maxw:1080px;
-  --shadow:0 10px 40px rgba(16,30,54,.10), 0 2px 8px rgba(16,30,54,.06);
+  --shadow:0 18px 50px rgba(16,30,54,.12), 0 2px 8px rgba(16,30,54,.05);
+  --grad:linear-gradient(120deg,var(--indigo),var(--brand) 55%,var(--teal));
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;letter-spacing:-.01em;font-weight:600}
-.serif{font-family:Fraunces,serif}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:Inter;font-weight:600;font-size:1rem;line-height:1;padding:.95rem 1.6rem;border-radius:999px;cursor:pointer;border:0;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;white-space:nowrap}
-.btn-primary{background:var(--brand);color:#fff;box-shadow:0 6px 20px rgba(29,78,216,.28)}
-.btn-primary:hover{background:var(--brand-2);transform:translateY(-1px);box-shadow:0 10px 26px rgba(29,78,216,.34)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.08;letter-spacing:-.012em;font-weight:600}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:Inter;font-weight:600;font-size:1rem;line-height:1;padding:.95rem 1.65rem;border-radius:999px;cursor:pointer;border:0;transition:transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s ease, background .18s ease, border-color .18s ease;white-space:nowrap}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.3)}
+.btn-primary:hover{background:var(--brand-d);transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,99,235,.38)}
+.btn-primary:active{transform:translateY(0)}
 .btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
-.btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
-.eyebrow{font-family:Inter;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
+.eyebrow{display:inline-block;font-family:Inter;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+
+/* logo */
+.logo{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
+.logo .mark{width:32px;height:32px;border-radius:9px;flex:0 0 auto;background:var(--grad);display:grid;place-items:center;box-shadow:0 4px 12px rgba(37,99,235,.3)}
+.logo .mark svg{width:20px;height:20px;display:block}
+.logo b{font-weight:800}.logo .w{color:var(--brand)}
 
 /* nav */
-header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;flex-wrap:wrap;gap:1rem}
-.logo{display:flex;align-items:center;gap:.55rem;font-weight:800;font-size:1.18rem;letter-spacing:-.02em}
-.logo .mark{width:30px;height:30px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:0 0 auto}
-.logo .mark svg{width:18px;height:18px}
+header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;flex-wrap:wrap;gap:1rem}
 .nav-links{display:flex;align-items:center;gap:2rem;font-size:.95rem;font-weight:500;color:var(--ink-2)}
-.nav-links a:hover{color:var(--ink)}
-.nav-cta{display:flex;align-items:center;gap:.8rem}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--brand);border-radius:2px;transition:width .22s ease}
+.nav-links a:hover{color:var(--ink)}.nav-links a:hover::after{width:100%}
 @media(max-width:760px){.nav-links{display:none}}
 
+/* reveal animations */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,18px) scale(1.12)}}
+@keyframes riseIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
 /* hero */
-.hero{padding:84px 0 56px;background:radial-gradient(1200px 500px at 80% -10%, var(--brand-soft), transparent 60%)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
-.hero h1{font-size:clamp(2.5rem,5.4vw,4rem);margin:.6rem 0 1.1rem}
-.hero h1 .hl{color:var(--brand)}
-.hero p.lead{font-size:1.2rem;color:var(--ink-2);max-width:34ch;margin-bottom:1.8rem}
+.hero{position:relative;padding:92px 0 64px;overflow:hidden}
+.hero .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;z-index:0;pointer-events:none}
+.hero .blob.b1{width:460px;height:460px;background:#dbe5ff;top:-160px;right:-80px;animation:blob 14s ease-in-out infinite}
+.hero .blob.b2{width:340px;height:340px;background:#d6f5f1;bottom:-140px;left:-100px;animation:blob 18s ease-in-out infinite reverse}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.hero .eyebrow,.hero h1,.hero .lead,.hero-cta,.hero-note{animation:riseIn .8s cubic-bezier(.2,.7,.3,1) both}
+.hero h1{animation-delay:.08s}.hero .lead{animation-delay:.16s}.hero-cta{animation-delay:.24s}.hero-note{animation-delay:.32s}
+.hero h1{font-size:clamp(2.55rem,5.4vw,4.1rem);margin:.7rem 0 1.1rem;font-weight:700}
+.hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.22rem;color:var(--ink-2);max-width:34ch;margin-bottom:1.9rem}
 .hero-cta{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
-.hero-note{margin-top:1.1rem;font-size:.92rem;color:var(--ink-2);display:flex;align-items:center;gap:.5rem}
-.hero-note svg{color:var(--accent);flex:0 0 auto}
+.hero-note{margin-top:1.15rem;font-size:.92rem;color:var(--ink-2);display:flex;align-items:center;gap:.5rem}
+.hero-note .chk{width:20px;height:20px;border-radius:50%;background:var(--teal);display:grid;place-items:center;flex:0 0 auto}
+.hero-note .chk svg{width:12px;height:12px}
 /* browser mockup */
-.mock{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.mock{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;animation:floatY 7s ease-in-out infinite}
 .mock-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem .9rem;border-bottom:1px solid var(--line);background:var(--bg-2)}
 .mock-bar i{width:11px;height:11px;border-radius:50%;background:#dfe4ec;display:inline-block}
-.mock-bar .url{margin-left:.6rem;font-size:.78rem;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:8px;padding:.25rem .7rem;flex:1}
+.mock-bar i:first-child{background:#ff5f57}.mock-bar i:nth-child(2){background:#febc2e}.mock-bar i:nth-child(3){background:#28c840}
+.mock-bar .url{margin-left:.6rem;font-size:.78rem;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:8px;padding:.28rem .7rem;flex:1;display:flex;align-items:center;gap:.4rem}
+.mock-bar .url svg{width:11px;height:11px;color:var(--teal)}
 .mock-body{padding:26px}
-.mock-body .mh{height:18px;width:55%;background:var(--ink);border-radius:6px;margin-bottom:12px;opacity:.92}
-.mock-body .ms{height:11px;width:80%;background:#dde3ee;border-radius:6px;margin-bottom:8px}
-.mock-body .ms.s2{width:65%}
+.mock-body .mh{height:18px;width:58%;background:var(--grad);border-radius:6px;margin-bottom:12px}
+.mock-body .ms{height:11px;width:80%;background:#e2e8f5;border-radius:6px;margin-bottom:8px}
+.mock-body .ms.s2{width:64%}
 .mock-body .row{display:flex;gap:12px;margin-top:18px}
 .mock-body .card{flex:1;height:74px;border-radius:10px;background:linear-gradient(135deg,var(--brand-soft),#fff);border:1px solid var(--line)}
 .mock-body .card:nth-child(2){background:linear-gradient(135deg,#e7faf8,#fff)}
+.mock-body .card:nth-child(3){background:linear-gradient(135deg,#efeefe,#fff)}
 .mock-body .btn-fake{margin-top:18px;height:36px;width:150px;border-radius:999px;background:var(--brand)}
-@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:36px}.hero p.lead{max-width:46ch}.hero{padding:54px 0 40px}}
+.mock-tag{position:absolute;right:-14px;top:30px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:12px;padding:.6rem .85rem;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:.45rem;animation:floatY 7s ease-in-out .8s infinite}
+.mock-tag .dot{width:9px;height:9px;border-radius:50%;background:var(--teal)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero p.lead{max-width:46ch}.hero{padding:56px 0 44px}.mock-tag{display:none}}
 
-/* section */
-section{padding:72px 0}
-.sec-head{text-align:center;max-width:620px;margin:0 auto 44px}
-.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin:.7rem 0 .6rem}
-.sec-head p{color:var(--ink-2);font-size:1.08rem}
+/* sections */
+section{padding:76px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
+.sec-head h2{font-size:clamp(1.95rem,3.7vw,2.7rem);margin:.7rem 0 .6rem;font-weight:600}
+.sec-head p{color:var(--ink-2);font-size:1.1rem}
 .alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
-.step .n{width:42px;height:42px;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-weight:700;font-family:Fraunces;font-size:1.25rem;margin-bottom:16px}
-.step h3{font-size:1.3rem;margin-bottom:.5rem}
-.step p{color:var(--ink-2);font-size:.98rem}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 27px;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+.step:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d7deea}
+.step .n{width:46px;height:46px;border-radius:13px;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:700;font-family:Fraunces;font-size:1.3rem;margin-bottom:18px;box-shadow:0 6px 16px rgba(37,99,235,.28)}
+.step h3{font-size:1.32rem;margin-bottom:.5rem}
+.step p{color:var(--ink-2);font-size:.99rem}
 @media(max-width:760px){.steps{grid-template-columns:1fr}}
 
 /* work */
 .work{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.work-card{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .15s ease, box-shadow .15s ease}
-.work-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#d7deea}
-.work-thumb{height:120px;background:var(--brand);position:relative;display:grid;place-items:center;color:#fff;font-family:Fraunces;font-weight:600;font-size:1.15rem;text-align:center;padding:0 18px}
-.work-card:nth-child(2) .work-thumb{background:#0e7c6b}
-.work-card:nth-child(3) .work-thumb{background:#1f3a2e}
+.work-card{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+.work-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#d7deea}
+.work-thumb{height:128px;position:relative;display:grid;place-items:center;color:#fff;font-family:Fraunces;font-weight:600;font-size:1.18rem;text-align:center;padding:0 18px;overflow:hidden}
+.work-card:nth-child(1) .work-thumb{background:linear-gradient(135deg,#7a2330,#b8413a)}
+.work-card:nth-child(2) .work-thumb{background:linear-gradient(135deg,#0e7c6b,#ff8a3c)}
+.work-card:nth-child(3) .work-thumb{background:linear-gradient(135deg,#16201e,#2d4a3e)}
+.work-thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(120px 80px at 80% 20%,rgba(255,255,255,.18),transparent)}
 .work-meta{padding:18px 20px}
 .work-meta .t{font-weight:600;margin-bottom:.2rem}
 .work-meta .s{font-size:.88rem;color:var(--ink-2)}
-.work-meta .go{font-size:.88rem;color:var(--brand);font-weight:600;margin-top:.6rem;display:inline-flex;gap:.3rem}
+.work-meta .go{font-size:.88rem;color:var(--brand);font-weight:600;margin-top:.7rem;display:inline-flex;gap:.35rem;transition:gap .2s ease}
+.work-card:hover .go{gap:.7rem}
 @media(max-width:760px){.work{grid-template-columns:1fr}}
 
 /* why */
-.why{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 40px}
-.why-item{display:flex;gap:14px}
-.why-item .ic{width:40px;height:40px;flex:0 0 auto;border-radius:11px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center}
-.why-item h3{font-size:1.12rem;font-family:Inter;font-weight:700;margin-bottom:.2rem}
-.why-item p{color:var(--ink-2);font-size:.96rem}
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 44px}
+.why-item{display:flex;gap:15px}
+.why-item .ic{width:44px;height:44px;flex:0 0 auto;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;transition:transform .2s ease}
+.why-item:hover .ic{transform:scale(1.08) rotate(-3deg)}
+.why-item h3{font-size:1.14rem;font-family:Inter;font-weight:700;margin-bottom:.2rem}
+.why-item p{color:var(--ink-2);font-size:.97rem}
 @media(max-width:680px){.why{grid-template-columns:1fr}}
 
 /* faq */
 .faq{max-width:760px;margin:0 auto}
-.faq details{border:1px solid var(--line);border-radius:12px;padding:2px 22px;margin-bottom:12px;background:#fff}
+.faq details{border:1px solid var(--line);border-radius:13px;padding:2px 22px;margin-bottom:12px;background:#fff;transition:border-color .2s ease, box-shadow .2s ease}
+.faq details[open]{border-color:#cfd9ea;box-shadow:0 6px 20px rgba(16,30,54,.06)}
 .faq summary{cursor:pointer;font-weight:600;padding:18px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:1.4rem;color:var(--brand);font-weight:400}
+.faq summary::after{content:"+";font-size:1.45rem;color:var(--brand);font-weight:400;transition:transform .2s ease}
 .faq details[open] summary::after{content:"–"}
 .faq details p{color:var(--ink-2);padding:0 0 18px}
 
 /* cta band */
-.cta-band{background:linear-gradient(135deg,#13245a,var(--brand));color:#fff;text-align:center;border-radius:24px;padding:60px 28px;box-shadow:var(--shadow)}
-.cta-band h2{font-size:clamp(1.9rem,3.8vw,2.7rem);margin-bottom:.7rem;color:#fff}
-.cta-band p{color:#cdd8f7;max-width:46ch;margin:0 auto 1.8rem;font-size:1.1rem}
-.cta-band .btn-primary{background:#fff;color:var(--brand);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.cta-band{position:relative;overflow:hidden;background:var(--grad);color:#fff;text-align:center;border-radius:26px;padding:64px 28px;box-shadow:0 24px 60px rgba(37,99,235,.3)}
+.cta-band::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.12);top:-180px;left:-80px;filter:blur(10px)}
+.cta-band::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.1);bottom:-160px;right:-60px}
+.cta-band h2,.cta-band p,.cta-band .btn{position:relative;z-index:1}
+.cta-band h2{font-size:clamp(1.95rem,3.9vw,2.8rem);margin-bottom:.7rem;color:#fff;font-weight:600}
+.cta-band p{color:rgba(255,255,255,.9);max-width:46ch;margin:0 auto 1.9rem;font-size:1.12rem}
+.cta-band .btn-primary{background:#fff;color:var(--brand);box-shadow:0 10px 30px rgba(0,0,0,.22)}
 .cta-band .btn-primary:hover{background:#f1f5ff}
 
 /* footer */
-footer{padding:46px 0 56px;border-top:1px solid var(--line);color:var(--ink-2);font-size:.92rem}
+footer{padding:48px 0 58px;border-top:1px solid var(--line);color:var(--ink-2);font-size:.92rem}
 .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 
 /* mobile sticky bar */
-.mbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:12px 16px;box-shadow:0 -4px 20px rgba(16,30,54,.08)}
+.mbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 16px;box-shadow:0 -4px 20px rgba(16,30,54,.08)}
 .mbar .btn{width:100%}
-@media(max-width:760px){.mbar{display:block}footer{padding-bottom:90px}}
+@media(max-width:760px){.mbar{display:block}footer{padding-bottom:92px}}
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="logo" href="#top">
-      <span class="mark"><svg viewBox="0 0 32 32"><path d="M8 20c1.7 1.5 3.7 2.1 5.7 1.7 2.7-.5 4.1-2.7 6.5-2.7 1.5 0 2.2.5 2.6.9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="22.5" cy="10.5" r="2.4" fill="#fff"/></svg></span>
-      ClearWeb
+    <a class="logo" href="#top" aria-label="ClearWeb home">
+      <span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M21.5 11A8 8 0 1 0 21.5 21" fill="none" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/><circle cx="23" cy="16" r="2.3" fill="#fff"/></svg></span>
+      <b>Clear<span class="w">Web</span></b>
     </a>
     <nav class="nav-links">
       <a href="#how">How it works</a>
@@ -144,15 +178,14 @@ footer{padding:46px 0 56px;border-top:1px solid var(--line);color:var(--ink-2);f
       <a href="#why">Why ClearWeb</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <div class="nav-cta">
-      <a class="btn btn-primary" href="https://cal.com/clearwebone/website" target="_blank" rel="noopener">Book a walkthrough</a>
-    </div>
+    <a class="btn btn-primary" href="https://cal.com/clearwebone/website" target="_blank" rel="noopener">Book a walkthrough</a>
   </div>
 </header>
 
 <main id="top">
 
 <section class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span>
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Websites for dental &amp; local practices</span>
@@ -163,16 +196,19 @@ footer{padding:46px 0 56px;border-top:1px solid var(--line);color:var(--ink-2);f
         <a class="btn btn-ghost" href="#work">See recent rebuilds</a>
       </div>
       <div class="hero-note">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         No deposit, no contract to see your new site.
       </div>
     </div>
-    <div class="mock" aria-hidden="true">
-      <div class="mock-bar"><i></i><i></i><i></i><span class="url">yourpractice.com</span></div>
-      <div class="mock-body">
-        <div class="mh"></div><div class="ms"></div><div class="ms s2"></div>
-        <div class="row"><div class="card"></div><div class="card"></div><div class="card"></div></div>
-        <div class="btn-fake"></div>
+    <div>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-bar"><i></i><i></i><i></i><span class="url"><svg viewBox="0 0 24 24" fill="none"><path d="M6 11V8a6 6 0 0 1 12 0v3" stroke="currentColor" stroke-width="2"/><rect x="5" y="11" width="14" height="9" rx="2" fill="currentColor"/></svg>yourpractice.com</span></div>
+        <div class="mock-body">
+          <div class="mh"></div><div class="ms"></div><div class="ms s2"></div>
+          <div class="row"><div class="card"></div><div class="card"></div><div class="card"></div></div>
+          <div class="btn-fake"></div>
+        </div>
+        <div class="mock-tag"><span class="dot"></span>Live preview</div>
       </div>
     </div>
   </div>
@@ -180,36 +216,36 @@ footer{padding:46px 0 56px;border-top:1px solid var(--line);color:var(--ink-2);f
 
 <section id="how" class="alt">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="eyebrow">Simple, no risk</span>
       <h2>How it works</h2>
       <p>Most agencies want a deposit before they touch anything. We flip it around.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">1</div><h3>We rebuild your site</h3><p>We take your real content, photos, and services and rebuild your whole site, modern and mobile-ready, at no cost to you.</p></div>
-      <div class="step"><div class="n">2</div><h3>You see it live</h3><p>You get a private link to the finished site and a quick walkthrough. Click through every page on your phone and your computer.</p></div>
-      <div class="step"><div class="n">3</div><h3>You decide</h3><p>Love it and we get it live on your own domain. Not for you and we part as friends. Zero pressure, nothing owed.</p></div>
+      <div class="step reveal"><div class="n">1</div><h3>We rebuild your site</h3><p>We take your real content, photos, and services and rebuild your whole site, modern and mobile-ready, at no cost to you.</p></div>
+      <div class="step reveal" style="transition-delay:.1s"><div class="n">2</div><h3>You see it live</h3><p>You get a private link to the finished site and a quick walkthrough. Click through every page on your phone and your computer.</p></div>
+      <div class="step reveal" style="transition-delay:.2s"><div class="n">3</div><h3>You decide</h3><p>Love it and we get it live on your own domain. Not for you and we part as friends. Zero pressure, nothing owed.</p></div>
     </div>
   </div>
 </section>
 
 <section id="work">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="eyebrow">Recent rebuilds</span>
       <h2>A few sites we have rebuilt</h2>
       <p>Real practices, rebuilt from their existing sites. Open any one and click around.</p>
     </div>
     <div class="work">
-      <a class="work-card" href="https://clearweb-independence-family-dentis-gamma.vercel.app" target="_blank" rel="noopener">
+      <a class="work-card reveal" href="https://clearweb-independence-family-dentis-gamma.vercel.app" target="_blank" rel="noopener">
         <div class="work-thumb">Independence Family Dentistry</div>
         <div class="work-meta"><div class="t">Family &amp; general dentistry</div><div class="s">Independence, KY</div><div class="go">View the rebuild →</div></div>
       </a>
-      <a class="work-card" href="https://clearweb-pediatric-dental-specialis-hazel.vercel.app" target="_blank" rel="noopener">
+      <a class="work-card reveal" style="transition-delay:.1s" href="https://clearweb-pediatric-dental-specialis-hazel.vercel.app" target="_blank" rel="noopener">
         <div class="work-thumb">Pediatric Dental Specialists</div>
         <div class="work-meta"><div class="t">Pediatric &amp; orthodontics</div><div class="s">Kansas City</div><div class="go">View the rebuild →</div></div>
       </a>
-      <a class="work-card" href="https://clearweb-drs-engen-pizzini-spokane-inky.vercel.app" target="_blank" rel="noopener">
+      <a class="work-card reveal" style="transition-delay:.2s" href="https://clearweb-drs-engen-pizzini-spokane-inky.vercel.app" target="_blank" rel="noopener">
         <div class="work-thumb">Drs. Engen, Hahn &amp; Pizzini</div>
         <div class="work-meta"><div class="t">Periodontics &amp; implants</div><div class="s">Spokane, WA</div><div class="go">View the rebuild →</div></div>
       </a>
@@ -219,27 +255,27 @@ footer{padding:46px 0 56px;border-top:1px solid var(--line);color:var(--ink-2);f
 
 <section id="why" class="alt">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="eyebrow">Why ClearWeb</span>
       <h2>Built for busy practices</h2>
       <p>Everything that makes a website worth having, none of the months of back and forth.</p>
     </div>
     <div class="why">
-      <div class="why-item"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div><h3>See it before you commit</h3><p>You judge the real, finished site, not a pitch deck or a vague proposal.</p></div></div>
-      <div class="why-item"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div><h3>Fast and mobile-first</h3><p>Loads quickly and looks right on the phone, where most of your patients find you.</p></div></div>
-      <div class="why-item"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3 4 6v5c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div><h3>Your real information</h3><p>We keep your services, your team, and your details. Your site, just clearer and current.</p></div></div>
-      <div class="why-item"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Easy to book</h3><p>Clear calls to action and click-to-call, so a visitor becomes an appointment.</p></div></div>
+      <div class="why-item reveal"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div><h3>See it before you commit</h3><p>You judge the real, finished site, not a pitch deck or a vague proposal.</p></div></div>
+      <div class="why-item reveal" style="transition-delay:.08s"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div><h3>Fast and mobile-first</h3><p>Loads quickly and looks right on the phone, where most of your patients find you.</p></div></div>
+      <div class="why-item reveal" style="transition-delay:.16s"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3 4 6v5c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div><h3>Your real information</h3><p>We keep your services, your team, and your details. Your site, just clearer and current.</p></div></div>
+      <div class="why-item reveal" style="transition-delay:.24s"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Easy to book</h3><p>Clear calls to action and click-to-call, so a visitor becomes an appointment.</p></div></div>
     </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="eyebrow">Questions</span>
       <h2>Good to know</h2>
     </div>
-    <div class="faq">
+    <div class="faq reveal">
       <details open><summary>Is the preview really free?</summary><p>Yes. We build your new site and show it to you with no deposit and no contract. You only pay if you decide to take it live.</p></details>
       <details><summary>How long does it take?</summary><p>The first version of your site is usually ready within a few days. Going live on your own domain is quick once you give us the go-ahead.</p></details>
       <details><summary>Do I keep my own information and photos?</summary><p>Absolutely. We rebuild from your real content, services, team, and any photos you already have. It stays your site and your information.</p></details>
@@ -251,7 +287,7 @@ footer{padding:46px 0 56px;border-top:1px solid var(--line);color:var(--ink-2);f
 
 <section>
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band reveal">
       <h2>See your new website, free</h2>
       <p>Book a 15 minute walkthrough. We will show you the rebuild, on desktop and mobile, and answer anything you are wondering.</p>
       <a class="btn btn-primary" href="https://cal.com/clearwebone/website" target="_blank" rel="noopener">Book your walkthrough</a>
@@ -263,7 +299,7 @@ footer{padding:46px 0 56px;border-top:1px solid var(--line);color:var(--ink-2);f
 
 <footer>
   <div class="wrap foot-in">
-    <div class="logo" style="font-size:1.05rem"><span class="mark" style="width:26px;height:26px"><svg viewBox="0 0 32 32"><path d="M8 20c1.7 1.5 3.7 2.1 5.7 1.7 2.7-.5 4.1-2.7 6.5-2.7 1.5 0 2.2.5 2.6.9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="22.5" cy="10.5" r="2.4" fill="#fff"/></svg></span>ClearWeb</div>
+    <a class="logo" href="#top" style="font-size:1.05rem"><span class="mark" style="width:28px;height:28px;border-radius:8px"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M21.5 11A8 8 0 1 0 21.5 21" fill="none" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/><circle cx="23" cy="16" r="2.3" fill="#fff"/></svg></span><b>Clear<span class="w">Web</span></b></a>
     <div>© 2026 ClearWeb. Modern websites for local practices.</div>
     <a href="https://cal.com/clearwebone/website" target="_blank" rel="noopener" style="color:var(--brand);font-weight:600">Book a walkthrough →</a>
   </div>
@@ -271,5 +307,15 @@ footer{padding:46px 0 56px;border-top:1px solid var(--line);color:var(--ink-2);f
 
 <div class="mbar"><a class="btn btn-primary" href="https://cal.com/clearwebone/website" target="_blank" rel="noopener">Book a free walkthrough</a></div>
 
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body>
 </html>
