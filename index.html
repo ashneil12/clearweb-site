@@ -1,167 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ClearWeb · A modern website for your practice, built before you pay</title>
-<meta name="description" content="ClearWeb rebuilds outdated dental and local-business websites. We build your new site first, you see it live, and you only move forward if you love it.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.55' stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%230ea5a4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M21.5 11A8 8 0 1 0 21.5 21' fill='none' stroke='white' stroke-width='3.1' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='16' r='2.3' fill='white'/%3E%3C/svg%3E">
-<meta property="og:title" content="ClearWeb · A modern website, built before you pay">
-<meta property="og:description" content="We rebuild your outdated website, you see it live first, and you only go ahead if you love it.">
+<title>ClearWeb · Miss the call. Keep the job.</title>
+<meta name="description" content="ClearWeb texts your missed callers back in seconds, gets the job details and books it in. For UK plumbers and heating engineers. Set up in a day, works with your existing number.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23132433'/%3E%3Cpath d='M8 10.5A2.5 2.5 0 0 1 10.5 8h11A2.5 2.5 0 0 1 24 10.5v7a2.5 2.5 0 0 1-2.5 2.5H14l-4.2 3.6c-.7.6-1.8.1-1.8-.8V10.5z' fill='%23fff'/%3E%3Cpath d='M12.5 14.6l2.1 2.1 4.9-4.9' fill='none' stroke='%23189A58' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta property="og:title" content="ClearWeb · Miss the call. Keep the job.">
+<meta property="og:description" content="Texts your missed callers back in seconds, gets the job details and books it in. For UK plumbers and heating engineers.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://clearweb.one">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"ClearWeb","url":"https://clearweb.one","email":"ash@clearweb.one","areaServed":"GB","description":"Missed-call recovery for UK plumbers and heating engineers. Texts missed callers back in seconds, collects job details and books the job in."}
+</script>
 <style>
 :root{
-  --ink:#0e1726; --ink-2:#41506a; --line:#e6e9ef; --bg:#ffffff; --bg-2:#f6f8fc;
-  --brand:#2563eb; --brand-d:#1d4ed8; --indigo:#4f46e5; --teal:#0ea5a4; --brand-soft:#eef3ff;
-  --radius:16px; --maxw:1080px;
-  --shadow:0 18px 50px rgba(16,30,54,.12), 0 2px 8px rgba(16,30,54,.05);
-  --grad:linear-gradient(120deg,var(--indigo),var(--brand) 55%,var(--teal));
+  --paper:#F7F5F0;        /* porcelain */
+  --paper-2:#EFEBE3;      /* deeper porcelain for panels */
+  --ink:#132433;          /* workwear navy */
+  --ink-2:#3E5468;        /* slate */
+  --line:#DCD6CA;         /* warm hairline */
+  --missed:#C43A2E;       /* missed-call red. used ONLY for lost/missed states */
+  --booked:#178A50;       /* booked green. used ONLY for won/booked states */
+  --booked-soft:#E3F2E9;
+  --missed-soft:#F9E9E7;
+  --card:#FFFFFF;
+  --maxw:1120px;
+  --font-d:"Archivo",system-ui,sans-serif;
+  --font-b:"IBM Plex Sans",system-ui,sans-serif;
+  --font-m:"IBM Plex Mono",ui-monospace,monospace;
+  --shadow:0 22px 60px rgba(19,36,51,.14), 0 3px 10px rgba(19,36,51,.06);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--font-b);background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.08;letter-spacing:-.012em;font-weight:600}
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:Inter;font-weight:600;font-size:1rem;line-height:1;padding:.95rem 1.65rem;border-radius:999px;cursor:pointer;border:0;transition:transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s ease, background .18s ease, border-color .18s ease;white-space:nowrap}
-.btn-primary{background:var(--brand);color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.3)}
-.btn-primary:hover{background:var(--brand-d);transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,99,235,.38)}
-.btn-primary:active{transform:translateY(0)}
-.btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
-.btn-ghost:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
-.eyebrow{display:inline-block;font-family:Inter;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+img{max-width:100%}
+h1,h2,h3{font-family:var(--font-d);line-height:1.05;letter-spacing:-.015em}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px}
+::selection{background:var(--ink);color:var(--paper)}
 
-/* logo */
-.logo{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
-.logo .mark{width:32px;height:32px;border-radius:9px;flex:0 0 auto;background:var(--grad);display:grid;place-items:center;box-shadow:0 4px 12px rgba(37,99,235,.3)}
-.logo .mark svg{width:20px;height:20px;display:block}
-.logo b{font-weight:800}.logo .w{color:var(--brand)}
-
-/* nav */
-header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;flex-wrap:wrap;gap:1rem}
-.nav-links{display:flex;align-items:center;gap:2rem;font-size:.95rem;font-weight:500;color:var(--ink-2)}
-.nav-links a{position:relative}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--brand);border-radius:2px;transition:width .22s ease}
-.nav-links a:hover{color:var(--ink)}.nav-links a:hover::after{width:100%}
-@media(max-width:760px){.nav-links{display:none}}
-
-/* reveal animations */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)}
+/* ---------- shared bits ---------- */
+.stamp{font-family:var(--font-m);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);display:inline-flex;align-items:center;gap:.65rem}
+.stamp::before{content:"";width:26px;height:1.5px;background:var(--ink-2);display:inline-block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--font-d);font-weight:700;font-size:1.02rem;line-height:1;padding:1.02rem 1.7rem;border-radius:10px;cursor:pointer;border:2px solid var(--ink);transition:transform .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease;white-space:nowrap}
+.btn-solid{background:var(--ink);color:var(--paper);box-shadow:0 10px 26px rgba(19,36,51,.28)}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(19,36,51,.34)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+.section{padding:96px 0}
+.section-head{max-width:640px;margin-bottom:52px}
+.section-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800;margin-top:.8rem}
+.section-head p{margin-top:.9rem;color:var(--ink-2);font-size:1.08rem}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease, transform .65s ease}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,18px) scale(1.12)}}
-@keyframes riseIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+/* ---------- nav ---------- */
+header.nav{position:sticky;top:0;z-index:60;background:rgba(247,245,240,.88);backdrop-filter:blur(10px) saturate(140%);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:var(--font-d);font-weight:900;font-size:1.28rem;letter-spacing:-.02em}
+.logo .mark{width:34px;height:34px;border-radius:8px;background:var(--ink);display:grid;place-items:center;flex:0 0 auto}
+.logo .mark svg{width:20px;height:20px}
+.nav-right{display:flex;align-items:center;gap:1.6rem}
+.nav-right .nav-link{font-weight:600;font-size:.95rem;color:var(--ink-2)}
+.nav-right .nav-link:hover{color:var(--ink)}
+.nav-right .btn{padding:.72rem 1.15rem;font-size:.92rem}
+@media(max-width:640px){.nav-right .nav-link{display:none}}
 
-/* hero */
-.hero{position:relative;padding:92px 0 64px;overflow:hidden}
-.hero .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;z-index:0;pointer-events:none}
-.hero .blob.b1{width:460px;height:460px;background:#dbe5ff;top:-160px;right:-80px;animation:blob 14s ease-in-out infinite}
-.hero .blob.b2{width:340px;height:340px;background:#d6f5f1;bottom:-140px;left:-100px;animation:blob 18s ease-in-out infinite reverse}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
-.hero .eyebrow,.hero h1,.hero .lead,.hero-cta,.hero-note{animation:riseIn .8s cubic-bezier(.2,.7,.3,1) both}
-.hero h1{animation-delay:.08s}.hero .lead{animation-delay:.16s}.hero-cta{animation-delay:.24s}.hero-note{animation-delay:.32s}
-.hero h1{font-size:clamp(2.55rem,5.4vw,4.1rem);margin:.7rem 0 1.1rem;font-weight:700}
-.hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lead{font-size:1.22rem;color:var(--ink-2);max-width:34ch;margin-bottom:1.9rem}
+/* ---------- hero ---------- */
+.hero{padding:84px 0 30px;position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:56px;align-items:center}
+.hero-grid>*{min-width:0}
+.hero h1{font-size:clamp(2.9rem,6vw,4.6rem);font-weight:900;margin:1rem 0 1.3rem}
+.hero h1 .miss{position:relative;white-space:nowrap}
+.hero h1 .miss::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.09em;background:var(--missed);transform:rotate(-2deg);border-radius:2px}
+.hero h1 .keep{color:var(--booked);white-space:nowrap}
+.hero p.lead{font-size:1.18rem;color:var(--ink-2);max-width:36ch;margin-bottom:2rem}
+.hero p.lead b{color:var(--ink);font-weight:600}
 .hero-cta{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
-.hero-note{margin-top:1.15rem;font-size:.92rem;color:var(--ink-2);display:flex;align-items:center;gap:.5rem}
-.hero-note .chk{width:20px;height:20px;border-radius:50%;background:var(--teal);display:grid;place-items:center;flex:0 0 auto}
-.hero-note .chk svg{width:12px;height:12px}
-/* browser mockup */
-.mock{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;animation:floatY 7s ease-in-out infinite}
-.mock-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem .9rem;border-bottom:1px solid var(--line);background:var(--bg-2)}
-.mock-bar i{width:11px;height:11px;border-radius:50%;background:#dfe4ec;display:inline-block}
-.mock-bar i:first-child{background:#ff5f57}.mock-bar i:nth-child(2){background:#febc2e}.mock-bar i:nth-child(3){background:#28c840}
-.mock-bar .url{margin-left:.6rem;font-size:.78rem;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:8px;padding:.28rem .7rem;flex:1;display:flex;align-items:center;gap:.4rem}
-.mock-bar .url svg{width:11px;height:11px;color:var(--teal)}
-.mock-body{padding:26px}
-.mock-body .mh{height:18px;width:58%;background:var(--grad);border-radius:6px;margin-bottom:12px}
-.mock-body .ms{height:11px;width:80%;background:#e2e8f5;border-radius:6px;margin-bottom:8px}
-.mock-body .ms.s2{width:64%}
-.mock-body .row{display:flex;gap:12px;margin-top:18px}
-.mock-body .card{flex:1;height:74px;border-radius:10px;background:linear-gradient(135deg,var(--brand-soft),#fff);border:1px solid var(--line)}
-.mock-body .card:nth-child(2){background:linear-gradient(135deg,#e7faf8,#fff)}
-.mock-body .card:nth-child(3){background:linear-gradient(135deg,#efeefe,#fff)}
-.mock-body .btn-fake{margin-top:18px;height:36px;width:150px;border-radius:999px;background:var(--brand)}
-.mock-tag{position:absolute;right:-14px;top:30px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:12px;padding:.6rem .85rem;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:.45rem;animation:floatY 7s ease-in-out .8s infinite}
-.mock-tag .dot{width:9px;height:9px;border-radius:50%;background:var(--teal)}
-@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero p.lead{max-width:46ch}.hero{padding:56px 0 44px}.mock-tag{display:none}}
+.hero-note{margin-top:1.3rem;font-family:var(--font-m);font-size:.82rem;color:var(--ink-2);letter-spacing:.02em}
+@media(max-width:920px){
+  .hero{padding-top:56px}
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:44px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:clamp(2.05rem,10.5vw,3rem)}
+  .nav-right .btn{padding:.62rem .85rem;font-size:.84rem}
+  .section{padding:72px 0}
+}
 
-/* sections */
-section{padding:76px 0}
-.sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
-.sec-head h2{font-size:clamp(1.95rem,3.7vw,2.7rem);margin:.7rem 0 .6rem;font-weight:600}
-.sec-head p{color:var(--ink-2);font-size:1.1rem}
-.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* ---------- phone demo ---------- */
+.demo-col{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.phone{width:min(360px,100%);background:var(--ink);border-radius:34px;padding:10px;box-shadow:var(--shadow);position:relative}
+.phone-screen{background:#FDFDFB;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;height:560px;position:relative}
+.phone-top{padding:14px 16px 12px;border-bottom:1px solid #ECE8DF;background:#FBFAF7;display:flex;align-items:center;gap:.7rem}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--font-d);font-weight:800;font-size:.85rem;flex:0 0 auto}
+.phone-top .who{line-height:1.2}
+.phone-top .who b{font-family:var(--font-d);font-size:.95rem;display:block}
+.chip{font-family:var(--font-m);font-size:.68rem;letter-spacing:.06em;padding:.18rem .5rem;border-radius:99px;display:inline-block;margin-top:.15rem;transition:background .4s ease,color .4s ease}
+.chip.missed{background:var(--missed-soft);color:var(--missed)}
+.chip.booked{background:var(--booked-soft);color:var(--booked)}
+.thread{flex:1;padding:16px 14px;display:flex;flex-direction:column;gap:10px;overflow:hidden;justify-content:flex-end}
+.event{align-self:center;font-family:var(--font-m);font-size:.72rem;color:var(--ink-2);background:var(--paper-2);padding:.35rem .8rem;border-radius:99px;display:flex;align-items:center;gap:.45rem}
+.event .dot{width:8px;height:8px;border-radius:50%;background:var(--missed);flex:0 0 auto}
+.bubble{max-width:82%;padding:.68rem .9rem;border-radius:16px;font-size:.92rem;line-height:1.45;position:relative}
+.bubble .t{display:block;font-family:var(--font-m);font-size:.62rem;color:var(--ink-2);opacity:.75;margin-top:.35rem}
+.bubble.biz{align-self:flex-start;background:#EFECE4;border-bottom-left-radius:5px}
+.bubble.cust{align-self:flex-end;background:var(--ink);color:#F4F6F8;border-bottom-right-radius:5px}
+.bubble.cust .t{color:#B9C4CE}
+.typing{align-self:flex-start;background:#EFECE4;border-radius:16px;border-bottom-left-radius:5px;padding:.75rem .95rem;display:flex;gap:5px}
+.typing i{width:7px;height:7px;border-radius:50%;background:#9AA5AE;animation:tblink 1.1s infinite}
+.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+@keyframes tblink{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.msg-enter{animation:msgIn .38s cubic-bezier(.2,.8,.3,1) both}
+@keyframes msgIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+/* the "your phone" toast */
+.toast{position:absolute;left:10px;right:10px;bottom:12px;background:var(--ink);color:#F4F6F8;border-radius:16px;padding:.85rem .95rem;display:flex;gap:.7rem;align-items:flex-start;box-shadow:0 14px 34px rgba(19,36,51,.45);opacity:0;transform:translateY(24px);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.3,1)}
+.toast.show{opacity:1;transform:none}
+.toast .tick{width:30px;height:30px;border-radius:9px;background:var(--booked);display:grid;place-items:center;flex:0 0 auto}
+.toast .tick svg{width:16px;height:16px}
+.toast .body{font-size:.82rem;line-height:1.45}
+.toast .body b{font-family:var(--font-d);display:block;font-size:.86rem;letter-spacing:.01em}
+.toast .body span{color:#C4CFDA}
+.toast .body .mono{font-family:var(--font-m);font-size:.7rem;color:#8FDBB4;display:block;margin-top:.2rem}
+.demo-caption{font-family:var(--font-m);font-size:.8rem;color:var(--ink-2);text-align:center;min-height:1.4em;transition:opacity .3s ease}
+.replay{background:none;border:none;font-family:var(--font-m);font-size:.78rem;color:var(--ink-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:.4rem}
+.replay:hover{color:var(--ink)}
 
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 27px;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
-.step:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d7deea}
-.step .n{width:46px;height:46px;border-radius:13px;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:700;font-family:Fraunces;font-size:1.3rem;margin-bottom:18px;box-shadow:0 6px 16px rgba(37,99,235,.28)}
-.step h3{font-size:1.32rem;margin-bottom:.5rem}
-.step p{color:var(--ink-2);font-size:.99rem}
-@media(max-width:760px){.steps{grid-template-columns:1fr}}
+/* ---------- agitate quote ---------- */
+.gut{padding:80px 0}
+.gut blockquote{font-family:var(--font-d);font-weight:800;font-size:clamp(1.7rem,4vw,2.9rem);line-height:1.18;letter-spacing:-.015em;max-width:22ch}
+.gut blockquote .red{color:var(--missed)}
+.gut .attr{margin-top:1.4rem;font-family:var(--font-m);font-size:.82rem;color:var(--ink-2)}
 
-/* work */
-.work{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.work-card{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
-.work-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#d7deea}
-.work-thumb{height:128px;position:relative;display:grid;place-items:center;color:#fff;font-family:Fraunces;font-weight:600;font-size:1.18rem;text-align:center;padding:0 18px;overflow:hidden}
-.work-card:nth-child(1) .work-thumb{background:linear-gradient(135deg,#7a2330,#b8413a)}
-.work-card:nth-child(2) .work-thumb{background:linear-gradient(135deg,#0e7c6b,#ff8a3c)}
-.work-card:nth-child(3) .work-thumb{background:linear-gradient(135deg,#16201e,#2d4a3e)}
-.work-thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(120px 80px at 80% 20%,rgba(255,255,255,.18),transparent)}
-.work-meta{padding:18px 20px}
-.work-meta .t{font-weight:600;margin-bottom:.2rem}
-.work-meta .s{font-size:.88rem;color:var(--ink-2)}
-.work-meta .go{font-size:.88rem;color:var(--brand);font-weight:600;margin-top:.7rem;display:inline-flex;gap:.35rem;transition:gap .2s ease}
-.work-card:hover .go{gap:.7rem}
-@media(max-width:760px){.work{grid-template-columns:1fr}}
+/* ---------- how it works: the job log ---------- */
+.log{background:var(--ink);color:var(--paper);padding:104px 0}
+.log .stamp{color:#9DB0C2}.log .stamp::before{background:#9DB0C2}
+.log h2{color:#fff}
+.log .section-head p{color:#B9C7D5}
+.log-rows{display:flex;flex-direction:column;border-top:1px solid #2A3E52}
+.log-row{display:grid;grid-template-columns:110px 22px 1fr;gap:22px;padding:26px 0;border-bottom:1px solid #2A3E52;align-items:baseline}
+.log-time{font-family:var(--font-m);font-size:.95rem;color:#8FA3B8}
+.log-dot{width:12px;height:12px;border-radius:50%;background:#3E5468;position:relative;top:2px;justify-self:center}
+.log-row.is-missed .log-dot{background:var(--missed);box-shadow:0 0 0 5px rgba(196,58,46,.18)}
+.log-row.is-booked .log-dot{background:var(--booked);box-shadow:0 0 0 5px rgba(23,138,80,.2)}
+.log-row h3{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.log-row p{color:#B9C7D5;font-size:1rem;max-width:56ch}
+.log-row.is-booked h3{color:#5FD69B}
+.log-foot{margin-top:2.2rem;font-family:var(--font-m);font-size:.85rem;color:#8FA3B8}
+.log-foot b{color:#5FD69B;font-weight:500}
+@media(max-width:640px){.log-row{grid-template-columns:74px 16px 1fr;gap:12px}.log-time{font-size:.8rem}}
 
-/* why */
-.why{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 44px}
-.why-item{display:flex;gap:15px}
-.why-item .ic{width:44px;height:44px;flex:0 0 auto;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;transition:transform .2s ease}
-.why-item:hover .ic{transform:scale(1.08) rotate(-3deg)}
-.why-item h3{font-size:1.14rem;font-family:Inter;font-weight:700;margin-bottom:.2rem}
-.why-item p{color:var(--ink-2);font-size:.97rem}
-@media(max-width:680px){.why{grid-template-columns:1fr}}
+/* ---------- what you get ---------- */
+.get-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.get-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 24px}
+.get-card .ico{width:40px;height:40px;border-radius:10px;background:var(--paper-2);display:grid;place-items:center;margin-bottom:1rem}
+.get-card .ico svg{width:20px;height:20px}
+.get-card h3{font-size:1.08rem;font-weight:700;margin-bottom:.45rem}
+.get-card p{font-size:.95rem;color:var(--ink-2)}
+@media(max-width:920px){.get-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.get-grid{grid-template-columns:1fr}}
 
-/* faq */
-.faq{max-width:760px;margin:0 auto}
-.faq details{border:1px solid var(--line);border-radius:13px;padding:2px 22px;margin-bottom:12px;background:#fff;transition:border-color .2s ease, box-shadow .2s ease}
-.faq details[open]{border-color:#cfd9ea;box-shadow:0 6px 20px rgba(16,30,54,.06)}
-.faq summary{cursor:pointer;font-weight:600;padding:18px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:1.45rem;color:var(--brand);font-weight:400;transition:transform .2s ease}
-.faq details[open] summary::after{content:"–"}
-.faq details p{color:var(--ink-2);padding:0 0 18px}
+/* ---------- pricing: the quote ---------- */
+.quote-wrap{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.quote-card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:34px 30px;display:flex;flex-direction:column;position:relative}
+.quote-card.featured{border-color:var(--ink);box-shadow:var(--shadow)}
+.quote-card .plan-tag{font-family:var(--font-m);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.quote-card h3{font-size:1.45rem;font-weight:800;margin:.5rem 0 .2rem}
+.price-line{display:flex;align-items:baseline;gap:.55rem;margin:.9rem 0 .3rem;flex-wrap:wrap}
+.price-line .big{font-family:var(--font-d);font-weight:900;font-size:2.5rem;letter-spacing:-.02em}
+.price-line .per{font-family:var(--font-m);font-size:.85rem;color:var(--ink-2)}
+.quote-items{margin:1.4rem 0 1.8rem;display:flex;flex-direction:column;gap:.65rem;flex:1}
+.quote-items li{list-style:none;display:flex;gap:.65rem;font-size:.96rem;align-items:flex-start}
+.quote-items li svg{width:18px;height:18px;flex:0 0 auto;margin-top:4px}
+.quote-card .btn{width:100%}
+.case{margin-top:1.3rem;background:var(--booked-soft);border-radius:12px;padding:.95rem 1.05rem;font-size:.88rem;line-height:1.55;color:#0F5C36}
+.case b{display:block;font-family:var(--font-m);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;color:var(--booked)}
+.founder{margin-top:2.4rem;background:var(--card);border:1.5px dashed var(--ink-2);border-radius:14px;padding:1.3rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;max-width:760px}
+.founder .n{font-family:var(--font-d);font-weight:900;font-size:1.6rem;color:var(--missed);line-height:1;flex:0 0 auto}
+.founder p{font-size:.95rem;color:var(--ink-2)}
+.founder p b{color:var(--ink)}
+@media(max-width:860px){.quote-grid{grid-template-columns:1fr}}
 
-/* cta band */
-.cta-band{position:relative;overflow:hidden;background:var(--grad);color:#fff;text-align:center;border-radius:26px;padding:64px 28px;box-shadow:0 24px 60px rgba(37,99,235,.3)}
-.cta-band::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.12);top:-180px;left:-80px;filter:blur(10px)}
-.cta-band::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.1);bottom:-160px;right:-60px}
-.cta-band h2,.cta-band p,.cta-band .btn{position:relative;z-index:1}
-.cta-band h2{font-size:clamp(1.95rem,3.9vw,2.8rem);margin-bottom:.7rem;color:#fff;font-weight:600}
-.cta-band p{color:rgba(255,255,255,.9);max-width:46ch;margin:0 auto 1.9rem;font-size:1.12rem}
-.cta-band .btn-primary{background:#fff;color:var(--brand);box-shadow:0 10px 30px rgba(0,0,0,.22)}
-.cta-band .btn-primary:hover{background:#f1f5ff}
+/* ---------- faq ---------- */
+.faq-list{max-width:760px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.35rem 0;font-family:var(--font-d);font-weight:700;font-size:1.1rem}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .pm{font-family:var(--font-m);font-size:1.3rem;color:var(--ink-2);transition:transform .25s ease;flex:0 0 auto}
+.faq-item[open] summary .pm{transform:rotate(45deg)}
+.faq-item .a{padding:0 0 1.4rem;color:var(--ink-2);max-width:60ch}
 
-/* footer */
-footer{padding:48px 0 58px;border-top:1px solid var(--line);color:var(--ink-2);font-size:.92rem}
-.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+/* ---------- final cta ---------- */
+.fin{background:var(--ink);color:var(--paper);padding:110px 0;text-align:center}
+.fin h2{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:900;color:#fff;max-width:18ch;margin:0 auto 1.1rem}
+.fin h2 .keep{color:#5FD69B}
+.fin p{color:#B9C7D5;max-width:44ch;margin:0 auto 2.2rem;font-size:1.1rem}
+.fin .btn-solid{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.fin .btn-solid:hover{box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.fin .reply-note{margin-top:1.6rem;font-family:var(--font-m);font-size:.83rem;color:#8FA3B8}
 
-/* mobile sticky bar */
-.mbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 16px;box-shadow:0 -4px 20px rgba(16,30,54,.08)}
-.mbar .btn{width:100%}
-@media(max-width:760px){.mbar{display:block}footer{padding-bottom:92px}}
+/* ---------- footer ---------- */
+footer{padding:44px 0 60px;border-top:1px solid var(--line)}
+.foot-in{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+.foot-in .fine{font-size:.85rem;color:var(--ink-2);max-width:52ch}
+.foot-in .fine a{text-decoration:underline;text-underline-offset:3px}
+.foot-in .fine .honest{display:block;margin-top:.8rem}
 </style>
 </head>
 <body>
@@ -169,129 +219,234 @@ footer{padding:48px 0 58px;border-top:1px solid var(--line);color:var(--ink-2);f
 <header class="nav">
   <div class="wrap nav-in">
     <a class="logo" href="#top" aria-label="ClearWeb home">
-      <span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M21.5 11A8 8 0 1 0 21.5 21" fill="none" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/><circle cx="23" cy="16" r="2.3" fill="#fff"/></svg></span>
-      <b>Clear<span class="w">Web</span></b>
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M8 10.5A2.5 2.5 0 0 1 10.5 8h11A2.5 2.5 0 0 1 24 10.5v7a2.5 2.5 0 0 1-2.5 2.5H14l-4.2 3.6c-.7.6-1.8.1-1.8-.8V10.5z" fill="#F7F5F0"/><path d="M12.5 14.6l2.1 2.1 4.9-4.9" fill="none" stroke="#5FD69B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      ClearWeb
     </a>
-    <nav class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#work">Recent rebuilds</a>
-      <a href="#why">Why ClearWeb</a>
-      <a href="#faq">FAQ</a>
+    <nav class="nav-right" aria-label="Main">
+      <a class="nav-link" href="#how">How it works</a>
+      <a class="nav-link" href="#quote">What it costs</a>
+      <a class="btn btn-solid" href="mailto:ash@clearweb.one?subject=Missed%20calls%20at%20my%20business">Get it on your number</a>
     </nav>
-    <a class="btn btn-primary" href="https://cal.com/clearwebone/website" target="_blank" rel="noopener">Book a walkthrough</a>
   </div>
 </header>
 
 <main id="top">
 
+<!-- ================= HERO ================= -->
 <section class="hero">
-  <span class="blob b1"></span><span class="blob b2"></span>
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Websites for dental &amp; local practices</span>
-      <h1>A modern website for your practice. <span class="hl">Built before you pay.</span></h1>
-      <p class="lead">We rebuild your outdated site, you see the whole thing live, and you only go ahead if you love it.</p>
+      <span class="stamp">For UK plumbers &amp; heating engineers</span>
+      <h1><span class="miss">Miss the call.</span><br><span class="keep">Keep the job.</span></h1>
+      <p class="lead">You're under a boiler and the phone rings out. Most callers won't leave a voicemail. They ring the next plumber. <b>ClearWeb texts them back in seconds, gets the job details and books it in.</b></p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="https://cal.com/clearwebone/website" target="_blank" rel="noopener">Book a free walkthrough</a>
-        <a class="btn btn-ghost" href="#work">See recent rebuilds</a>
+        <a class="btn btn-solid" href="mailto:ash@clearweb.one?subject=Missed%20calls%20at%20my%20business">Get it on your number</a>
+        <a class="btn btn-line" href="#quote">What it costs</a>
       </div>
-      <div class="hero-note">
-        <span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        No deposit, no contract to see your new site.
-      </div>
+      <p class="hero-note">Set up in a day &nbsp;·&nbsp; works with your existing number &nbsp;·&nbsp; month to month</p>
     </div>
-    <div>
-      <div class="mock" aria-hidden="true">
-        <div class="mock-bar"><i></i><i></i><i></i><span class="url"><svg viewBox="0 0 24 24" fill="none"><path d="M6 11V8a6 6 0 0 1 12 0v3" stroke="currentColor" stroke-width="2"/><rect x="5" y="11" width="14" height="9" rx="2" fill="currentColor"/></svg>yourpractice.com</span></div>
-        <div class="mock-body">
-          <div class="mh"></div><div class="ms"></div><div class="ms s2"></div>
-          <div class="row"><div class="card"></div><div class="card"></div><div class="card"></div></div>
-          <div class="btn-fake"></div>
+
+    <div class="demo-col">
+      <div class="phone" role="img" aria-label="Animation of a missed call being recovered by text message and turned into a booked job">
+        <div class="phone-screen">
+          <div class="phone-top">
+            <span class="avatar" aria-hidden="true">DP</span>
+            <div class="who">
+              <b>Dave's Plumbing &amp; Heating</b>
+              <span class="chip missed" id="chip">07:42 · CALL MISSED</span>
+            </div>
+          </div>
+          <div class="thread" id="thread" aria-hidden="true"></div>
+          <div class="toast" id="toast" aria-hidden="true">
+            <span class="tick"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="body">
+              <b>Meanwhile, on your phone</b>
+              <span>New booking: boiler not firing, banging noise. Sarah, BS7.</span>
+              <span class="mono">TOMORROW 8 TO 10AM · TAP TO CONFIRM</span>
+            </div>
+          </div>
         </div>
-        <div class="mock-tag"><span class="dot"></span>Live preview</div>
+      </div>
+      <p class="demo-caption" id="caption">You're on a job. The phone rings out.</p>
+      <button class="replay" id="replay" type="button">Watch it again</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AGITATE ================= -->
+<section class="gut">
+  <div class="wrap">
+    <blockquote class="reveal">One missed boiler swap is <span class="red">two grand</span> handed to the next name on Google.</blockquote>
+    <p class="attr reveal">And you never find out it happened. The call just dies in voicemail.</p>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="log" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">How it works</span>
+      <h2>Nine minutes. Phone never answered. Job kept.</h2>
+      <p>This is a real morning with ClearWeb on your number. You were under a floor the whole time.</p>
+    </div>
+    <div class="log-rows">
+      <div class="log-row is-missed reveal">
+        <span class="log-time">07:42</span><span class="log-dot" aria-hidden="true"></span>
+        <div><h3>A call rings out</h3><p>You're mid-job, hands full. Normally this is where the caller gives up and rings the next plumber on the list.</p></div>
+      </div>
+      <div class="log-row reveal">
+        <span class="log-time">07:42</span><span class="log-dot" aria-hidden="true"></span>
+        <div><h3>They get a text within seconds</h3><p>"Sorry we missed your call. What do you need a hand with, and what's the postcode?" It reads like your office, in your name.</p></div>
+      </div>
+      <div class="log-row reveal">
+        <span class="log-time">07:44</span><span class="log-dot" aria-hidden="true"></span>
+        <div><h3>It asks the right questions</h3><p>What's wrong, how urgent, morning or afternoon. It talks back like a person and knows when to hand anything odd straight to you.</p></div>
+      </div>
+      <div class="log-row is-booked reveal">
+        <span class="log-time">07:51</span><span class="log-dot" aria-hidden="true"></span>
+        <div><h3>Booked</h3><p>The job lands on your phone with the caller's name, number, postcode and problem. You confirm with one tap and turn up.</p></div>
+      </div>
+    </div>
+    <p class="log-foot reveal">Total time on the phone for you: <b>zero seconds.</b></p>
+  </div>
+</section>
+
+<!-- ================= WHAT YOU GET ================= -->
+<section class="section" id="get">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">What you get</span>
+      <h2>Built to catch jobs, not to impress software people.</h2>
+    </div>
+    <div class="get-grid">
+      <div class="get-card reveal">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.3 3.7c-.7.6-1.7.1-1.7-.8V6.5z" fill="none" stroke="#132433" stroke-width="1.8"/></svg></span>
+        <h3>It talks back</h3>
+        <p>Answers questions, asks the right ones, and takes the details down properly. Callers get a real conversation, not an autoresponder.</p>
+      </div>
+      <div class="get-card reveal">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="5" width="16" height="15" rx="2.5" fill="none" stroke="#132433" stroke-width="1.8"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4" stroke="#132433" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 14.5l2.2 2.2 4.8-4.8" fill="none" stroke="#178A50" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Books straight into your day</h3>
+        <p>It offers times you've approved and pencils the job in. You confirm or move it with one tap.</p>
+      </div>
+      <div class="get-card reveal">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h10v18H7z" fill="none" stroke="#132433" stroke-width="1.8" stroke-linejoin="round"/><path d="M10.5 18h3" stroke="#132433" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Your number stays</h3>
+        <p>Nothing to install and nothing changes for callers. It only steps in when a call goes unanswered.</p>
+      </div>
+      <div class="get-card reveal">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="3.5" fill="none" stroke="#132433" stroke-width="1.8"/><path d="M5 20c.8-3.5 3.7-5.5 7-5.5s6.2 2 7 5.5" fill="none" stroke="#132433" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>You stay in charge</h3>
+        <p>It never quotes prices and never promises what you haven't approved. Anything unusual lands on your phone to handle your way.</p>
+      </div>
+      <div class="get-card reveal">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v6M12 15v6M3 12h6M15 12h6" stroke="#132433" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="2.2" fill="#132433"/></svg></span>
+        <h3>Set up in a day</h3>
+        <p>I connect it, test it with you on a real missed call, and you're live. If your phone setup can't take it, you don't pay.</p>
+      </div>
+      <div class="get-card reveal">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M4 12l4-4M4 12l4 4" stroke="#132433" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Leave whenever</h3>
+        <p>Month to month, no contract. If it isn't paying for itself in caught jobs, walk away.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="how" class="alt">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Simple, no risk</span>
-      <h2>How it works</h2>
-      <p>Most agencies want a deposit before they touch anything. We flip it around.</p>
+<!-- ================= PRICING ================= -->
+<div class="quote-wrap" id="quote">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="stamp">The quote</span>
+        <h2>Priced like a job. No surprises.</h2>
+        <p>One setup fee, one monthly. Everything included, itemised below, same as a proper quote should be.</p>
+      </div>
+      <div class="quote-grid">
+
+        <div class="quote-card reveal">
+          <span class="plan-tag">Plan 1</span>
+          <h3>Call Catcher</h3>
+          <div class="price-line"><span class="big">£300</span><span class="per">setup, then £99 a month</span></div>
+          <ul class="quote-items">
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Instant text-back on every missed call</li>
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Job details taken down: name, postcode, problem, urgency</li>
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Bookings offered from times you approve</li>
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Every enquiry lands on your phone</li>
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Setup, testing and support by me, directly</li>
+          </ul>
+          <a class="btn btn-line" href="mailto:ash@clearweb.one?subject=Call%20Catcher%20for%20my%20business">Start with Plan 1</a>
+        </div>
+
+        <div class="quote-card featured reveal">
+          <span class="plan-tag">Plan 2</span>
+          <h3>Call Catcher + Reviews</h3>
+          <div class="price-line"><span class="big">£750</span><span class="per">setup, then £149 a month</span></div>
+          <ul class="quote-items">
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Call Catcher</li>
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>After each finished job it asks your customer for a Google review, link in hand</li>
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Genuine reviews only. No buying, no gating, nothing dodgy</li>
+            <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#178A50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>More reviews means more calls, which means more caught jobs</li>
+          </ul>
+          <div class="case">
+            <b>A real one</b>
+            The last business I built the review engine for had no Google presence at all. Two months later they'd passed 100 reviews. They now take on a new hire every few months to keep up with the work coming in.
+          </div>
+          <a class="btn btn-solid" href="mailto:ash@clearweb.one?subject=Call%20Catcher%20%2B%20Reviews%20for%20my%20business" style="margin-top:1.3rem">Start with Plan 2</a>
+        </div>
+
+      </div>
+      <div class="founder reveal">
+        <span class="n">3</span>
+        <p><b>Founder rate.</b> These prices hold for the first three UK businesses only, in exchange for honest feedback and permission to use your results as a case study. After that the setup fee goes up. When they're gone, they're gone.</p>
+      </div>
     </div>
-    <div class="steps">
-      <div class="step reveal"><div class="n">1</div><h3>We rebuild your site</h3><p>We take your real content, photos, and services and rebuild your whole site, modern and mobile-ready, at no cost to you.</p></div>
-      <div class="step reveal" style="transition-delay:.1s"><div class="n">2</div><h3>You see it live</h3><p>You get a private link to the finished site and a quick walkthrough. Click through every page on your phone and your computer.</p></div>
-      <div class="step reveal" style="transition-delay:.2s"><div class="n">3</div><h3>You decide</h3><p>Love it and we get it live on your own domain. Not for you and we part as friends. Zero pressure, nothing owed.</p></div>
+  </section>
+</div>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">Straight answers</span>
+      <h2>What plumbers ask me.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>Will it put my customers off?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="a">It reads like a text from your office, in your business's name. Callers get an answer in seconds instead of a dead line and a beep. In practice people are relieved someone got back to them.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>I've already got voicemail.<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="a">Keep it. The gap voicemail can't cover is the callers who hang up without leaving a message, which these days is most of them. The text reaches those people in the minute they'd otherwise ring your competitor.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Do I need a new number or a new phone?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="a">No. Your number stays exactly as it is and nothing changes for callers. It only wakes up when a call goes unanswered. I check it works with your setup before you pay anything.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What happens with calls it can't handle?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="a">Anything odd, angry or complicated gets handed straight to you with the caller's number and what they said. It takes down details and books jobs. It doesn't pretend to be a plumber.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Am I tied into a contract?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="a">No. Month to month, cancel whenever. If it isn't obviously paying for itself in caught jobs, you should cancel.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Who am I actually dealing with?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="a">Me. I'm Ash, I build phone and booking systems for UK trades. I set yours up, I test it with you, and when you message, I answer. No account managers, no ticket queue.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<section id="work">
+<!-- ================= FINAL CTA ================= -->
+<section class="fin">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Recent rebuilds</span>
-      <h2>A few sites we have rebuilt</h2>
-      <p>Real practices, rebuilt from their existing sites. Open any one and click around.</p>
-    </div>
-    <div class="work">
-      <a class="work-card reveal" href="https://clearweb-independence-family-dentis-gamma.vercel.app" target="_blank" rel="noopener">
-        <div class="work-thumb">Independence Family Dentistry</div>
-        <div class="work-meta"><div class="t">Family &amp; general dentistry</div><div class="s">Independence, KY</div><div class="go">View the rebuild →</div></div>
-      </a>
-      <a class="work-card reveal" style="transition-delay:.1s" href="https://clearweb-pediatric-dental-specialis-hazel.vercel.app" target="_blank" rel="noopener">
-        <div class="work-thumb">Pediatric Dental Specialists</div>
-        <div class="work-meta"><div class="t">Pediatric &amp; orthodontics</div><div class="s">Kansas City</div><div class="go">View the rebuild →</div></div>
-      </a>
-      <a class="work-card reveal" style="transition-delay:.2s" href="https://clearweb-drs-engen-pizzini-spokane-inky.vercel.app" target="_blank" rel="noopener">
-        <div class="work-thumb">Drs. Engen, Hahn &amp; Pizzini</div>
-        <div class="work-meta"><div class="t">Periodontics &amp; implants</div><div class="s">Spokane, WA</div><div class="go">View the rebuild →</div></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="why" class="alt">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Why ClearWeb</span>
-      <h2>Built for busy practices</h2>
-      <p>Everything that makes a website worth having, none of the months of back and forth.</p>
-    </div>
-    <div class="why">
-      <div class="why-item reveal"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div><h3>See it before you commit</h3><p>You judge the real, finished site, not a pitch deck or a vague proposal.</p></div></div>
-      <div class="why-item reveal" style="transition-delay:.08s"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div><h3>Fast and mobile-first</h3><p>Loads quickly and looks right on the phone, where most of your patients find you.</p></div></div>
-      <div class="why-item reveal" style="transition-delay:.16s"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3 4 6v5c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div><h3>Your real information</h3><p>We keep your services, your team, and your details. Your site, just clearer and current.</p></div></div>
-      <div class="why-item reveal" style="transition-delay:.24s"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Easy to book</h3><p>Clear calls to action and click-to-call, so a visitor becomes an appointment.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Questions</span>
-      <h2>Good to know</h2>
-    </div>
-    <div class="faq reveal">
-      <details open><summary>Is the preview really free?</summary><p>Yes. We build your new site and show it to you with no deposit and no contract. You only pay if you decide to take it live.</p></details>
-      <details><summary>How long does it take?</summary><p>The first version of your site is usually ready within a few days. Going live on your own domain is quick once you give us the go-ahead.</p></details>
-      <details><summary>Do I keep my own information and photos?</summary><p>Absolutely. We rebuild from your real content, services, team, and any photos you already have. It stays your site and your information.</p></details>
-      <details><summary>What does it cost if I want it live?</summary><p>Simple, transparent pricing. We will walk you through it on the call so there are no surprises. No long contracts.</p></details>
-      <details><summary>What kinds of practices do you work with?</summary><p>Mostly dental and local healthcare practices, but the approach works for any local business with an outdated website.</p></details>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="cta-band reveal">
-      <h2>See your new website, free</h2>
-      <p>Book a 15 minute walkthrough. We will show you the rebuild, on desktop and mobile, and answer anything you are wondering.</p>
-      <a class="btn btn-primary" href="https://cal.com/clearwebone/website" target="_blank" rel="noopener">Book your walkthrough</a>
-    </div>
+    <h2>Want it catching <span class="keep">your</span> calls this week?</h2>
+    <p>Email me and I'll send a 90 second example of it catching a job for a business like yours. If it's not for you, that costs you nothing.</p>
+    <a class="btn btn-solid" href="mailto:ash@clearweb.one?subject=Send%20me%20the%20example">Email ash@clearweb.one</a>
+    <p class="reply-note">Got an email from me already? Just hit reply on that.</p>
   </div>
 </section>
 
@@ -299,23 +454,94 @@ footer{padding:48px 0 58px;border-top:1px solid var(--line);color:var(--ink-2);f
 
 <footer>
   <div class="wrap foot-in">
-    <a class="logo" href="#top" style="font-size:1.05rem"><span class="mark" style="width:28px;height:28px;border-radius:8px"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M21.5 11A8 8 0 1 0 21.5 21" fill="none" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/><circle cx="23" cy="16" r="2.3" fill="#fff"/></svg></span><b>Clear<span class="w">Web</span></b></a>
-    <div>© 2026 ClearWeb. Modern websites for local practices.</div>
-    <a href="https://cal.com/clearwebone/website" target="_blank" rel="noopener" style="color:var(--brand);font-weight:600">Book a walkthrough →</a>
+    <a class="logo" href="#top" aria-label="ClearWeb home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M8 10.5A2.5 2.5 0 0 1 10.5 8h11A2.5 2.5 0 0 1 24 10.5v7a2.5 2.5 0 0 1-2.5 2.5H14l-4.2 3.6c-.7.6-1.8.1-1.8-.8V10.5z" fill="#F7F5F0"/><path d="M12.5 14.6l2.1 2.1 4.9-4.9" fill="none" stroke="#5FD69B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      ClearWeb
+    </a>
+    <p class="fine">
+      ClearWeb is run by Ash Lanelle in the UK. <a href="mailto:ash@clearweb.one">ash@clearweb.one</a>
+      <span class="honest">If I've emailed you, it's because your business is publicly listed on Google. Reply "no" to any email and you'll never hear from me again. No lists, no spam, no hard feelings.</span>
+      <span class="honest">© 2026 ClearWeb</span>
+    </p>
   </div>
 </footer>
 
-<div class="mbar"><a class="btn btn-primary" href="https://cal.com/clearwebone/website" target="_blank" rel="noopener">Book a free walkthrough</a></div>
-
 <script>
-(function(){
-  var els=document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
-  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(e){io.observe(e)});
-})();
+/* ---------- scroll reveals ---------- */
+const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- phone demo ---------- */
+const thread  = document.getElementById('thread');
+const chip    = document.getElementById('chip');
+const toast   = document.getElementById('toast');
+const caption = document.getElementById('caption');
+const replay  = document.getElementById('replay');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const SCRIPT = [
+  {type:'event', text:'Call to Dave’s Plumbing · 07:42 · no answer', cap:'You’re on a job. The phone rings out.', wait:1600},
+  {type:'biz',  text:'Hi, it’s Dave’s Plumbing. Sorry we missed your call. What do you need a hand with, and what’s the postcode?', t:'07:42', cap:'Seconds later, they get a text.', wait:2600, typing:900},
+  {type:'cust', text:'Boiler’s not firing, no hot water. BS7.', t:'07:43', cap:'They tell it the job.', wait:2200, typing:1100},
+  {type:'biz',  text:'We can get that sorted. Is it making any noise or losing pressure? And is morning or afternoon better for a visit?', t:'07:44', cap:'It asks the right questions.', wait:2800, typing:1200},
+  {type:'cust', text:'Banging noise. Morning’s better.', t:'07:45', cap:'It offers times you’ve approved.', wait:2200, typing:1000},
+  {type:'biz',  text:'Booked you in for tomorrow between 8 and 10am. Dave will confirm shortly. Anything changes, just text here.', t:'07:51', cap:'Booked, in your name.', wait:1800, typing:1100, book:true},
+  {type:'toast', cap:'And the whole job lands on your phone.', wait:4200}
+];
+
+let timer=null, step=0, running=false;
+const wait = ms => new Promise(r => timer=setTimeout(r,ms));
+
+function bubble(item){
+  const b=document.createElement('div');
+  b.className='bubble '+item.type+' msg-enter';
+  b.innerHTML=item.text+(item.t?'<span class="t">'+item.t+'</span>':'');
+  thread.appendChild(b);
+}
+function eventRow(item){
+  const e=document.createElement('div');
+  e.className='event msg-enter';
+  e.innerHTML='<span class="dot"></span>'+item.text;
+  thread.appendChild(e);
+}
+async function typing(ms){
+  const t=document.createElement('div');t.className='typing msg-enter';
+  t.innerHTML='<i></i><i></i><i></i>';
+  thread.appendChild(t);await wait(ms);t.remove();
+}
+function setCap(txt){caption.style.opacity=0;setTimeout(()=>{caption.textContent=txt;caption.style.opacity=1},250)}
+function resetDemo(){
+  clearTimeout(timer);thread.innerHTML='';toast.classList.remove('show');
+  chip.textContent='07:42 · CALL MISSED';chip.className='chip missed';
+}
+async function runDemo(){
+  if(running)return;running=true;resetDemo();
+  for(const item of SCRIPT){
+    if(item.type==='event')eventRow(item);
+    else if(item.type==='toast'){toast.classList.add('show')}
+    else{if(item.typing)await typing(item.typing);bubble(item)}
+    if(item.book){chip.textContent='07:51 · JOB BOOKED';chip.className='chip booked'}
+    if(item.cap)setCap(item.cap);
+    await wait(item.wait);
+  }
+  running=false;
+}
+function showFinal(){
+  resetDemo();
+  SCRIPT.forEach(item=>{
+    if(item.type==='event')eventRow(item);
+    else if(item.type==='toast')toast.classList.add('show');
+    else bubble(item);
+  });
+  chip.textContent='07:51 · JOB BOOKED';chip.className='chip booked';
+  setCap('And the whole job lands on your phone.');
+}
+if(reduced){showFinal()}
+else{
+  const phoneIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){runDemo();phoneIO.disconnect()}})},{threshold:.35});
+  phoneIO.observe(document.querySelector('.phone'));
+}
+replay.addEventListener('click',()=>{if(reduced){showFinal()}else{running=false;runDemo()}});
 </script>
 </body>
 </html>
