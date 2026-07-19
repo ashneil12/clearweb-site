@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>ClearWeb | Never lose another job to voicemail</title>
 <meta name="description" content="A 90-second look at how ClearWeb catches the calls you miss, texts the caller back in seconds, works out the job, and books it straight into your diary.">
 <meta name="robots" content="noindex">
@@ -54,7 +55,8 @@
     padding:16px 30px;border-radius:12px;box-shadow:0 10px 26px rgba(20,84,122,.28);transition:transform .15s ease,box-shadow .15s ease}
   .cta:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(20,84,122,.34)}
   .cta-note{color:var(--muted);font-size:14.5px;margin-top:11px}
-  #cal-inline{min-height:520px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+  #cal-inline{min-height:780px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+  @media (max-width:640px){#cal-inline{min-height:900px}}
   .cal-fallback{padding:34px;text-align:center;color:var(--muted)}
   footer{margin:52px 0 40px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px}
   footer strong{color:var(--ink)}
@@ -122,7 +124,7 @@ Cal.ns.chat("inline", {
   config: { layout: "month_view" },
   calLink: "clearwebone/chat"
 });
-Cal.ns.chat("ui", { hideEventTypeDetails: false, layout: "month_view" });
+Cal.ns.chat("ui", { hideEventTypeDetails: false, layout: "month_view", theme: "light", hideBranding: true });
 
 // Drop the fallback message once the real calendar renders.
 (function () {
