@@ -55,8 +55,9 @@
     padding:16px 30px;border-radius:12px;box-shadow:0 10px 26px rgba(20,84,122,.28);transition:transform .15s ease,box-shadow .15s ease}
   .cta:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(20,84,122,.34)}
   .cta-note{color:var(--muted);font-size:14.5px;margin-top:11px}
-  #cal-inline{min-height:780px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
-  @media (max-width:640px){#cal-inline{min-height:900px}}
+  /* Cal auto-sizes its own iframe to its content. Forcing a height only pads blank space
+     inside the iframe, so let it size itself. The slot column scrolls internally by design. */
+  #cal-inline{min-height:420px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
   .cal-fallback{padding:34px;text-align:center;color:var(--muted)}
   footer{margin:52px 0 40px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px}
   footer strong{color:var(--ink)}
