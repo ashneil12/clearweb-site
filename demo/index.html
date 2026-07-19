@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ClearWeb | Never lose another job to voicemail</title>
+<meta name="description" content="A 90-second look at how ClearWeb catches the calls you miss, texts the caller back in seconds, works out the job, and books it straight into your diary.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clearweb.one/demo">
+<meta property="og:title" content="ClearWeb | Never lose another job to voicemail">
+<meta property="og:description" content="See a missed call become a booked job in 90 seconds. £299 a month, no setup fees, 30-day money-back guarantee.">
+<meta property="og:image" content="https://clearweb.one/assets/demo-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F0; --ink:#132433; --line:#DCD6CA; --card:#FFFFFF;
+    --blue:#14547A; --blue-deep:#0B3551; --booked:#178A50; --booked-soft:#E3F2E9;
+    --muted:#5C6B78; --maxw:920px;
+    --font-d:"Archivo",system-ui,sans-serif; --font-b:"IBM Plex Sans",system-ui,sans-serif;
+    --shadow:0 22px 60px rgba(19,36,51,.14), 0 3px 10px rgba(19,36,51,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-b);-webkit-font-smoothing:antialiased;line-height:1.55}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  a{color:inherit}
+  header{padding:26px 0 6px}
+  .logo{font-family:var(--font-d);font-weight:800;font-size:23px;letter-spacing:-.04em;text-decoration:none}
+  .logo .w{color:var(--blue)}
+  h1{font-family:var(--font-d);font-weight:900;letter-spacing:-.045em;line-height:1.03;
+     font-size:clamp(30px,5.4vw,50px);margin:20px 0 12px}
+  .sub{color:var(--muted);font-size:clamp(16px,1.9vw,19px);margin:0 0 26px;max-width:640px}
+  .player{position:relative;background:#0B1B26;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(19,36,51,.08)}
+  .player video{display:block;width:100%;height:auto;aspect-ratio:1664/1080;background:#0B1B26}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(22px,3.4vw,34px);box-shadow:var(--shadow)}
+  section{margin:40px 0}
+  h2{font-family:var(--font-d);font-weight:800;letter-spacing:-.035em;font-size:clamp(22px,3.2vw,30px);margin:0 0 20px}
+  ul.gets{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+  ul.gets li{position:relative;padding-left:38px;font-size:clamp(15.5px,1.7vw,17.5px)}
+  ul.gets li::before{content:"";position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:50%;
+    background:var(--booked-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23178A50' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/14px no-repeat}
+  .price{margin:28px 0 0;padding-top:24px;border-top:1px solid var(--line)}
+  .price .amt{font-family:var(--font-d);font-weight:900;letter-spacing:-.04em;font-size:clamp(34px,5.6vw,50px);line-height:1}
+  .price .terms{color:var(--muted);font-size:clamp(15px,1.8vw,18px);margin-top:7px}
+  .guar{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding:10px 18px;border-radius:999px;
+    background:var(--booked-soft);border:1px solid rgba(23,138,80,.32);color:#0F6B3D;font-weight:600;font-size:clamp(14px,1.5vw,16px)}
+  .guar::before{content:"";width:17px;height:17px;flex:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F6B3D' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E") center/contain no-repeat}
+  .cta{display:inline-block;margin-top:24px;background:var(--blue);color:#fff;text-decoration:none;
+    font-family:var(--font-d);font-weight:800;font-size:clamp(16px,1.9vw,19px);letter-spacing:-.01em;
+    padding:16px 30px;border-radius:12px;box-shadow:0 10px 26px rgba(20,84,122,.28);transition:transform .15s ease,box-shadow .15s ease}
+  .cta:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(20,84,122,.34)}
+  .cta-note{color:var(--muted);font-size:14.5px;margin-top:11px}
+  #cal-inline{min-height:520px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+  .cal-fallback{padding:34px;text-align:center;color:var(--muted)}
+  footer{margin:52px 0 40px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px}
+  footer strong{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header><a class="logo" href="/">Clear<span class="w">Web</span></a></header>
+
+  <h1>A missed call, turned into a booked job.</h1>
+  <p class="sub">A couple of minutes. It shows you exactly what happens when a customer rings and you can't get to the phone, and what it costs.</p>
+
+  <div class="player">
+    <video controls playsinline preload="metadata" poster="/assets/demo-poster.jpg">
+      <source src="/assets/demo.mp4" type="video/mp4">
+      Your browser can't play this video. <a href="/assets/demo.mp4">Download it here</a>.
+    </video>
+  </div>
+
+  <section class="card">
+    <h2>Here's exactly what you get</h2>
+    <ul class="gets">
+      <li>Every missed call gets a text back in seconds, so the caller stays with you</li>
+      <li>It actually talks to them, works out the job and postcode, and books it in</li>
+      <li>The booked job lands straight on your phone</li>
+      <li>Website and chat enquiries get the same instant reply</li>
+      <li>Your phone buzzes every time it catches you a job</li>
+      <li>Works with your existing number, live in a day, nothing changes on your end</li>
+    </ul>
+
+    <div class="price">
+      <div class="amt">£299 a month</div>
+      <div class="terms">No setup fees. Cancel any time.</div>
+      <div class="guar">30-day money-back guarantee. If it's not catching you jobs, full refund.</div>
+      <div>
+        <a class="cta" href="https://cal.com/clearwebone/chat">Book a 10-minute call</a>
+        <div class="cta-note">I check it works with your number and setup before you pay a penny.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Or grab a slot right here</h2>
+    <div id="cal-inline">
+      <div class="cal-fallback" id="cal-fallback">
+        Loading the calendar. If it doesn't appear,
+        <a href="https://cal.com/clearwebone/chat"><strong>book here instead</strong></a>.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>ClearWeb</strong><br>
+    10, 351 Wilmslow Road, Manchester, M14 6XS<br>
+    <a href="mailto:ash@clearweb.one">ash@clearweb.one</a>
+  </footer>
+</div>
+
+<script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "chat", { origin: "https://cal.com" });
+Cal.ns.chat("inline", {
+  elementOrSelector: "#cal-inline",
+  config: { layout: "month_view" },
+  calLink: "clearwebone/chat"
+});
+Cal.ns.chat("ui", { hideEventTypeDetails: false, layout: "month_view" });
+
+// Drop the fallback message once the real calendar renders.
+(function () {
+  var host = document.getElementById("cal-inline");
+  var fb = document.getElementById("cal-fallback");
+  if (!host || !fb) return;
+  var obs = new MutationObserver(function () {
+    if (host.querySelector("iframe")) { fb.remove(); obs.disconnect(); }
+  });
+  obs.observe(host, { childList: true, subtree: true });
+})();
+</script>
+
+</body>
+</html>
