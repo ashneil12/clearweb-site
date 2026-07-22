@@ -158,6 +158,38 @@
     .replay.available { display: inline-flex; }
     .end-card.visible ~ .replay, .offer-card.visible ~ .replay { color: white; border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08); box-shadow: none; }
 
+    /* Compact mode: when embedded in the landing-page iframe (short viewport)
+       the full-screen minimums would clip the phones, so scale everything down. */
+    @media (max-height: 760px) {
+      .demo-stage { grid-template-rows: 34px minmax(0, 1fr) auto; gap: 10px;
+        inset: 12px clamp(20px, 3vw, 48px) 10px; }
+      .stage-header .logo { font-size: 17px; }
+      .phones { gap: clamp(60px, 7vw, 120px); }
+      .phone { width: clamp(210px, 15vw, 260px); height: clamp(400px, 56vh, 500px);
+        border-radius: 34px; }
+      .screen { border-radius: 28px; }
+      .phone::before { top: 10px; height: 16px; }
+      .status-bar { height: 34px; font-size: 10px; padding-top: 2px; }
+      .messages-view { padding-top: 34px; }
+      .desk-view { padding: 44px 10px 12px; gap: 7px; }
+      .bubble { font-size: 11.5px; padding: 8px 10px; }
+      .thread-avatar { width: 30px; height: 30px; font-size: 11px; }
+      .caption { font-size: clamp(15px, 1.5vw, 21px); }
+      .story-bar { min-height: 40px; }
+      .intro h1 { font-size: clamp(34px, 4.6vw, 64px); }
+      .intro .logo { margin-bottom: 24px; font-size: clamp(24px, 2vw, 34px); }
+      .intro-copy { font-size: clamp(14px, 1.2vw, 19px); margin-top: 18px; }
+      .end-card h1 { font-size: clamp(32px, 4.4vw, 64px); }
+      .offer-title { font-size: clamp(24px, 2.8vw, 42px); margin-bottom: 16px; }
+      .offer-list { gap: 8px; margin-bottom: 18px; }
+      .offer-list li { font-size: clamp(13px, 1.15vw, 17px); padding-left: 34px; }
+      .offer-list li::before { width: 24px; height: 24px; font-size: 12px; }
+      .offer-price { font-size: clamp(22px, 2.4vw, 36px); }
+      .offer-price-sub { font-size: clamp(13px, 1.2vw, 17px); }
+      .offer-guarantee { font-size: clamp(12px, 1vw, 15px); padding: 8px 16px; }
+      .offer-cta { font-size: clamp(12.5px, 1.1vw, 16px); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition-duration: .01s !important; }
     }
