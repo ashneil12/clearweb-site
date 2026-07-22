@@ -210,6 +210,19 @@
     links[i].addEventListener("click", function () { track("book_click"); });
   }
 
+  /* The price is on the page as well as in the video, so "did they watch to the
+     end" does NOT tell you whether they saw it. This does. saw_price WITHOUT a
+     video_play means they scrolled, read £299 cold, and left before watching. */
+  var priceEl = document.querySelector(".price");
+  if (priceEl && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var n = 0; n < entries.length; n++) {
+        if (entries[n].isIntersecting) { track("saw_price"); io.disconnect(); }
+      }
+    }, { threshold: 0.5 });
+    io.observe(priceEl);
+  }
+
   /* Drop-off: report the furthest point reached when they go.
      pagehide alone misses the common mobile case of switching apps mid-video,
      so visibilitychange is wired up too. Both are safe to double-fire because
