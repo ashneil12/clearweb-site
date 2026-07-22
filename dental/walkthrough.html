@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClearWeb patient reactivation demo for dental practices</title>
+  <style>
+    :root {
+      --ink: #10283b;
+      --muted: #667786;
+      --line: #dbe2e6;
+      --paper: #f2f0eb;
+      --surface: #ffffff;
+      --screen: #f7f8f8;
+      --accent: #14547a;
+      --accent-deep: #0b3551;
+      --accent-pale: #e3eef3;
+      --warm: #f6b95f;
+      --green: #2d9768;
+      --green-soft: #e3f2e9;
+      --phone: #152430;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+      --shadow: 0 30px 70px rgba(17, 40, 57, .15), 0 8px 24px rgba(17, 40, 57, .08);
+    }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: clip; background: var(--paper); color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+    button { font: inherit; }
+
+    .viewport { position: fixed; inset: 0; width: 100vw; height: 100vh; overflow: clip; isolation: isolate;
+      background:
+        linear-gradient(rgba(20, 84, 122, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 84, 122, .035) 1px, transparent 1px),
+        radial-gradient(circle at 50% 38%, #fff 0, #f8f8f5 44%, var(--paper) 100%);
+      background-size: 54px 54px, 54px 54px, auto; }
+
+    .logo { display: inline-flex; align-items: center; color: var(--accent-deep); font-size: 22px; font-weight: 760; letter-spacing: -.055em; }
+    .wordmark-web { color: var(--accent); font-weight: 900; }
+    .logo-light .wordmark-clear { color: white; }
+    .logo-light .wordmark-web { color: #8dc7e6; }
+
+    .intro { position: absolute; z-index: 30; inset: 0; display: grid; place-items: center; padding: 7vw;
+      background: #f7f6f2; cursor: pointer; transition: opacity .7s var(--ease), transform .7s var(--ease), visibility .7s; }
+    .intro:focus-visible { outline: 3px solid rgba(20,84,122,.28); outline-offset: -12px; }
+    .intro::before, .intro::after { content: ""; position: absolute; border: 1px solid rgba(20,84,122,.12); border-radius: 50%; pointer-events: none; }
+    .intro::before { width: 620px; height: 620px; left: -250px; bottom: -360px; box-shadow: 0 0 0 70px rgba(20,84,122,.025), 0 0 0 140px rgba(20,84,122,.018); }
+    .intro::after { width: 420px; height: 420px; right: -160px; top: -220px; box-shadow: 0 0 0 54px rgba(20,84,122,.025); }
+    .intro.hidden { opacity: 0; transform: scale(1.015); visibility: hidden; pointer-events: none; }
+    .intro-content { position: relative; z-index: 2; width: min(1120px, 86vw); text-align: center; }
+    .intro .logo { justify-content: center; margin-bottom: clamp(48px, 6vh, 72px); font-size: clamp(34px, 2.5vw, 48px); }
+    .intro h1 { max-width: 1100px; margin: 0 auto; font-size: clamp(52px, 5.6vw, 104px); line-height: .99; font-weight: 880; letter-spacing: -.06em; }
+    .intro-copy { max-width: 760px; margin: 30px auto 0; color: var(--muted); font-size: clamp(18px, 1.35vw, 26px); line-height: 1.5; font-weight: 560; }
+
+    .demo-stage { position: absolute; inset: clamp(24px, 3vh, 36px) clamp(34px, 4vw, 76px) clamp(20px, 2.5vh, 30px);
+      display: grid; grid-template-rows: 50px minmax(0, 1fr) auto; gap: clamp(15px, 2vh, 24px);
+      opacity: 0; transform: translateY(14px); pointer-events: none; transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .demo-stage.active { opacity: 1; transform: none; pointer-events: auto; }
+    .stage-header { display: flex; align-items: center; }
+    .stage-header .logo { font-size: 21px; }
+
+    .phones { display: flex; justify-content: center; align-items: center; gap: clamp(110px, 10vw, 190px); min-height: 0; }
+    .phone-group { display: grid; justify-items: center; gap: 10px; transition: opacity .7s var(--ease), filter .7s var(--ease), transform .7s var(--ease); }
+    .phone-group.inactive { opacity: .27; filter: grayscale(.72); transform: scale(.965); }
+    .phone-label { display: flex; align-items: center; gap: 8px; color: #3f5668; font-size: clamp(14px, .95vw, 18px); font-weight: 800; }
+    .phone-label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-pale); }
+
+    .phone { position: relative; width: clamp(300px, 18vw, 350px); height: clamp(555px, 62vh, 670px); padding: 8px;
+      border: 1px solid rgba(255,255,255,.24); border-radius: clamp(42px, 2.7vw, 52px); background: var(--phone); box-shadow: var(--shadow); }
+    .phone::before { content: ""; position: absolute; z-index: 12; top: 15px; left: 50%; width: 30%; height: 23px; transform: translateX(-50%); border-radius: 20px; background: #101b24; }
+    .phone::after { content: ""; position: absolute; left: -4px; top: 126px; width: 3px; height: 64px; border-radius: 3px 0 0 3px; background: #31404a; box-shadow: 0 76px 0 #31404a; }
+    .phone.buzz { animation: buzz .5s ease; }
+    @keyframes buzz {
+      0%,100% { transform: translateX(0); }
+      15%,45%,75% { transform: translateX(-4px); }
+      30%,60%,90% { transform: translateX(4px); }
+    }
+    .screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: clamp(35px, 2.25vw, 45px); background: var(--screen); }
+
+    .status-bar { position: absolute; z-index: 15; top: 0; left: 0; right: 0; height: 47px; display: flex; align-items: center; justify-content: space-between;
+      padding: 4px 20px 0; color: var(--ink); font-size: 12px; font-weight: 850; }
+    .status-icons { display: flex; align-items: center; gap: 6px; }
+    .signal { display: flex; align-items: end; gap: 2px; height: 11px; }
+    .signal i { display: block; width: 3px; background: currentColor; border-radius: 2px; }
+    .signal i:nth-child(1) { height: 4px; } .signal i:nth-child(2) { height: 7px; } .signal i:nth-child(3) { height: 10px; }
+    .wifi { width: 13px; height: 10px; border: 2px solid currentColor; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; border-radius: 50% 50% 0 0; transform: translateY(2px); }
+    .battery { position: relative; width: 20px; height: 10px; padding: 2px; border: 1.5px solid currentColor; border-radius: 3px; }
+    .battery::before { content: ""; display: block; width: 80%; height: 100%; border-radius: 1px; background: currentColor; }
+    .battery::after { content: ""; position: absolute; right: -3px; top: 2px; width: 2px; height: 4px; border-radius: 0 2px 2px 0; background: currentColor; }
+
+    .messages-view { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 47px 0 0; }
+    .thread-header { display: grid; justify-items: center; gap: 4px; padding: 8px 16px 12px; background: rgba(247,248,248,.96); border-bottom: 1px solid var(--line); }
+    .thread-avatar { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--accent-pale); color: var(--accent-deep); font-size: 14px; font-weight: 850; }
+    .thread-name { font-size: 12.5px; font-weight: 700; color: var(--ink); }
+    .message-list { flex: 1; display: flex; flex-direction: column; gap: 9px; padding: 14px 13px 18px; overflow: hidden; justify-content: flex-end; }
+
+    .bubble { max-width: 82%; padding: 10px 13px; border-radius: 18px; font-size: clamp(13px, .92vw, 15.5px); line-height: 1.38;
+      opacity: 0; transform: translateY(10px) scale(.97); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+    .bubble.visible { opacity: 1; transform: none; }
+    .bubble.inbound { align-self: flex-start; background: #e9e9eb; color: #111; border-bottom-left-radius: 6px; }
+    .bubble.outbound { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 6px; }
+    .bubble .time { display: block; margin-top: 4px; font-size: 10px; opacity: .55; }
+
+    .typing-bubble { align-self: flex-start; display: none; gap: 4px; padding: 12px 15px; border-radius: 18px; border-bottom-left-radius: 6px; background: #e9e9eb; }
+    .typing-bubble.outbound-typing { align-self: flex-end; background: var(--accent-pale); border-bottom-left-radius: 18px; border-bottom-right-radius: 6px; }
+    .typing-bubble.play { display: inline-flex; }
+    .typing-bubble i { width: 7px; height: 7px; border-radius: 50%; background: #9aa4ad; animation: blink 1.2s infinite; }
+    .typing-bubble i:nth-child(2) { animation-delay: .18s; }
+    .typing-bubble i:nth-child(3) { animation-delay: .36s; }
+    @keyframes blink { 0%, 70%, 100% { opacity: .35; transform: translateY(0); } 35% { opacity: 1; transform: translateY(-2px); } }
+
+    /* Front-desk phone */
+    .desk-view { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 60px 14px 16px; gap: 10px; }
+    .desk-heading { font-size: 12px; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; color: #6b7c8a; padding: 0 4px; }
+    .desk-card { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 12px 14px;
+      opacity: .55; transition: opacity .5s var(--ease); }
+    .desk-card .row1 { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 800; }
+    .desk-card .row2 { margin-top: 3px; color: var(--muted); font-size: 12px; }
+    .badge { font-size: 10px; font-weight: 850; letter-spacing: .04em; padding: 3px 8px; border-radius: 999px; background: var(--accent-pale); color: var(--accent-deep); }
+    .lead-alert { position: relative; border: 1px solid rgba(45,151,104,.45); border-radius: 16px; background: var(--green-soft); padding: 13px 14px;
+      opacity: 0; transform: translateY(12px) scale(.97); transition: opacity .55s var(--ease), transform .55s var(--ease); }
+    .lead-alert.visible { opacity: 1; transform: none; }
+    .lead-alert .row1 { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 850; color: #0f6b3d; }
+    .lead-alert .row2 { margin-top: 4px; font-size: 12.5px; color: #22543c; line-height: 1.45; }
+    .lead-badge { font-size: 10px; font-weight: 900; letter-spacing: .05em; padding: 3px 8px; border-radius: 999px; background: var(--green); color: white; }
+    .week-count { margin-top: auto; text-align: center; padding: 12px; border-radius: 14px; background: var(--accent-pale); color: var(--accent-deep);
+      font-size: 12.5px; font-weight: 800; opacity: 0; transition: opacity .6s var(--ease); }
+    .week-count.visible { opacity: 1; }
+    .week-count b { font-size: 17px; }
+
+    .story-bar { display: grid; place-items: center; min-height: 56px; }
+    .caption { display: none; max-width: 1000px; text-align: center; font-size: clamp(19px, 1.7vw, 30px); font-weight: 820; letter-spacing: -.035em; }
+    .caption.visible { display: block; animation: capIn .5s var(--ease); }
+    @keyframes capIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .end-card, .offer-card { position: absolute; inset: 0; display: grid; place-items: center; padding: 5vw; background: var(--accent-deep); color: white; text-align: center;
+      opacity: 0; transform: scale(1.02); visibility: hidden; pointer-events: none; transition: opacity .8s var(--ease), transform .8s var(--ease), visibility .8s; }
+    .end-card { z-index: 35; } .offer-card { z-index: 36; }
+    .end-card.visible, .offer-card.visible { opacity: 1; transform: none; visibility: visible; pointer-events: auto; }
+    .end-card .logo { justify-content: center; margin-bottom: clamp(38px, 5vh, 60px); font-size: clamp(23px, 1.7vw, 32px); }
+    .end-card h1 { margin: 0; font-size: clamp(46px, 5.2vw, 96px); line-height: 1.01; letter-spacing: -.06em; font-weight: 880; }
+    .end-card p { margin: 32px 0 0; color: #d6e5ed; font-size: clamp(18px, 1.45vw, 28px); font-weight: 650; }
+
+    .offer-content { width: min(1000px, 90vw); }
+    .offer-card .logo { justify-content: center; margin-bottom: clamp(22px, 3vh, 38px); font-size: clamp(21px, 1.6vw, 30px); }
+    .offer-title { margin: 0 0 clamp(24px, 3vh, 38px); font-size: clamp(34px, 3.4vw, 60px); line-height: 1.02; letter-spacing: -.04em; font-weight: 820; }
+    .offer-list { list-style: none; margin: 0 auto clamp(26px, 3.2vh, 42px); padding: 0; max-width: 800px; text-align: left; display: grid; gap: clamp(11px, 1.5vh, 18px); }
+    .offer-list li { position: relative; padding-left: 44px; font-size: clamp(17px, 1.32vw, 24px); line-height: 1.35; font-weight: 560; color: #e7f1f6; }
+    .offer-list li::before { content: "✓"; position: absolute; left: 0; top: -1px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--green); color: white; font-size: 16px; font-weight: 800; }
+    .offer-price { margin: 0 0 6px; font-size: clamp(30px, 3vw, 52px); font-weight: 880; letter-spacing: -.03em; }
+    .offer-price-sub { margin: 0 0 clamp(16px, 2vh, 24px); color: #bcd6e3; font-size: clamp(16px, 1.4vw, 24px); font-weight: 650; }
+    .offer-guarantee { display: inline-block; margin: 0 0 clamp(18px, 2.4vh, 30px); padding: 10px 22px; border-radius: 999px;
+      background: rgba(45,151,104,.18); border: 1px solid rgba(45,151,104,.5); color: #d6f0e2; font-size: clamp(15px, 1.15vw, 21px); font-weight: 700; line-height: 1.3; }
+    .offer-cta { margin: 0 auto; max-width: 680px; color: #bcd6e3; font-size: clamp(16px, 1.3vw, 24px); font-weight: 600; line-height: 1.4; }
+
+    .replay { position: absolute; z-index: 40; right: clamp(18px, 2vw, 30px); bottom: clamp(16px, 2vh, 26px); display: none; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.9); color: var(--ink);
+      font-size: 14px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 22px rgba(17,40,57,.1); }
+    .replay.available { display: inline-flex; }
+    .end-card.visible ~ .replay, .offer-card.visible ~ .replay { color: white; border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08); box-shadow: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition-duration: .01s !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="viewport">
+
+    <section class="intro" id="intro" tabindex="0" aria-label="Start demo">
+      <div class="intro-content">
+        <div class="logo wordmark" aria-label="ClearWeb"><span class="wordmark-clear">Clear</span><span class="wordmark-web">Web</span></div>
+        <h1>Your old patient list is a full diary waiting to happen.</h1>
+        <p class="intro-copy">Watch a patient who went quiet 14 months ago get one friendly text, ask a question, and book themselves back in. Nothing changes for your front desk.</p>
+      </div>
+    </section>
+
+    <section class="demo-stage" id="demo-stage" data-current-step="-1">
+      <div class="stage-header">
+        <div class="logo wordmark" aria-label="ClearWeb"><span class="wordmark-clear">Clear</span><span class="wordmark-web">Web</span></div>
+      </div>
+
+      <div class="phones">
+        <!-- Patient's phone -->
+        <div class="phone-group" id="patient-group">
+          <div class="phone-label">The patient's phone</div>
+          <div class="phone">
+            <div class="screen">
+              <div class="status-bar"><span>11:26</span><span class="status-icons"><span class="signal"><i></i><i></i><i></i></span><span class="wifi"></span><span class="battery"></span></span></div>
+              <div class="messages-view">
+                <div class="thread-header">
+                  <div class="thread-avatar" data-practice-initials>BD</div>
+                  <div class="thread-name" data-practice-name>Brighter Dental</div>
+                </div>
+                <div class="message-list" id="message-list">
+                  <div class="bubble outbound" id="wakeup-text">Hi Sarah, it's <span data-practice-name>Brighter Dental</span>. You were due a check-up a while back and we never got you rebooked. Would you like to get it sorted?<span class="time">11:26</span></div>
+                  <div class="bubble inbound" id="patient-reply">Oh gosh, completely forgot about this 😅 probably yes. How much is a check-up these days?<span class="time">11:31</span></div>
+                  <div class="bubble outbound" id="answer-text">No problem at all! A check-up with hygiene is £{{checkupPrice}}. We have Tuesday 2:40pm or Thursday 10:20am free this week. Would either suit?<span class="time">11:31</span></div>
+                  <div class="bubble inbound" id="patient-books">Thursday works 👍<span class="time">11:33</span></div>
+                  <div class="bubble outbound" id="confirm-text">Perfect, you're booked for Thursday 10:20am. We'll send a reminder the day before. See you then, Sarah!<span class="time">11:33</span></div>
+                  <div class="typing-bubble outbound-typing" id="typing-practice"><i></i><i></i><i></i></div>
+                  <div class="typing-bubble" id="typing-patient"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Front desk phone -->
+        <div class="phone-group inactive" id="desk-group">
+          <div class="phone-label">Your front desk</div>
+          <div class="phone" id="desk-phone">
+            <div class="screen">
+              <div class="status-bar"><span>11:33</span><span class="status-icons"><span class="signal"><i></i><i></i><i></i></span><span class="wifi"></span><span class="battery"></span></span></div>
+              <div class="desk-view">
+                <div class="desk-heading">This week's diary</div>
+                <div class="desk-card">
+                  <div class="row1"><span>Tom H · hygiene</span><span class="badge">TUE 9:00</span></div>
+                  <div class="row2">Existing booking</div>
+                </div>
+                <div class="desk-card">
+                  <div class="row1"><span>Priya K · whitening consult</span><span class="badge">WED 3:20</span></div>
+                  <div class="row2">Existing booking</div>
+                </div>
+                <div class="lead-alert" id="lead-alert">
+                  <div class="row1"><span>Sarah W · check-up + hygiene</span><span class="lead-badge">THU 10:20</span></div>
+                  <div class="row2">Booked by ClearWeb reactivation. Last visit 14 months ago. No staff time used.</div>
+                </div>
+                <div class="week-count" id="week-count">Reactivated this week: <b>7 patients</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-bar" aria-live="polite">
+        <div class="caption visible" id="caption-list">Every practice is sitting on patients who quietly drifted away.</div>
+        <div class="caption" id="caption-wake">One friendly text, in your practice's name. That's all it takes.</div>
+        <div class="caption" id="caption-reply">She hasn't forgotten you. Life just got busy.</div>
+        <div class="caption" id="caption-answer">It answers her questions and offers real slots.</div>
+        <div class="caption" id="caption-book">She books herself in. Nobody at the practice lifted a finger.</div>
+        <div class="caption" id="caption-desk">The booking lands in your diary. Last visit: 14 months ago.</div>
+      </div>
+    </section>
+
+    <section class="end-card" id="end-card" aria-label="Result">
+      <div class="end-content">
+        <div class="logo logo-light wordmark" aria-label="ClearWeb"><span class="wordmark-clear">Clear</span><span class="wordmark-web">Web</span></div>
+        <h1>It wakes them up. It answers them. It fills your diary.</h1>
+        <p>Patients you already paid to win. Back in the chair.</p>
+      </div>
+    </section>
+
+    <section class="offer-card" id="offer-card" aria-label="Offer">
+      <div class="offer-content">
+        <div class="logo logo-light wordmark" aria-label="ClearWeb"><span class="wordmark-clear">Clear</span><span class="wordmark-web">Web</span></div>
+        <h2 class="offer-title">Here's exactly how it works</h2>
+        <ul class="offer-list">
+          <li>We take your lapsed patients and unbooked enquiries, and handle the rest</li>
+          <li>Every text goes in your practice's name, and you approve the wording first</li>
+          <li>It answers their questions within seconds, day or night, until they book or say stop</li>
+          <li>Booked patients land in your diary, or with your coordinator if you prefer</li>
+          <li>A shared log shows every conversation and every appointment, updated weekly</li>
+          <li>Live in a couple of days, nothing for your front desk to learn</li>
+        </ul>
+        <!-- PRICE + GUARANTEE: edit these lines if the offer changes. -->
+        <p class="offer-price">Your first 10 returning patients are free.</p>
+        <p class="offer-price-sub">After that, £50 only when a patient actually sits in the chair. No setup fee, no monthly fee, no contract. A no-show costs you nothing.</p>
+        <p class="offer-guarantee">If nobody ends up in the chair, you owe nothing. It costs £0 to find out.</p>
+        <p class="offer-cta">A typical practice has 800 to 2,000 patients who quietly drifted away. One returning patient is worth £100 to £250 on the day. Reply and we'll set it up.</p>
+      </div>
+    </section>
+
+    <button class="replay" id="replay" type="button" aria-label="Restart demo">↻ <span>Restart</span></button>
+  </main>
+
+  <script>
+    // EDIT THESE PLACEHOLDERS PER RECORDING / PROSPECT.
+    const DEMO = {
+      practiceName: "Brighter Dental",
+      checkupPrice: "95"
+    };
+
+    // Manual advance by default (arrow keys) so a voiceover can pace it.
+    // ?auto=1 turns on timed advance for embedding on the landing page.
+    const AUTO = new URLSearchParams(location.search).get("auto") === "1";
+    const HOLDS = [5200, 5600, 5200, 6200, 5200, 7000, 6000, 5600, 0]; // per step, auto mode only
+
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => document.querySelectorAll(s);
+
+    const intro = $("#intro");
+    const demoStage = $("#demo-stage");
+    const replay = $("#replay");
+    const messageList = $("#message-list");
+    const patientGroup = $("#patient-group");
+    const deskGroup = $("#desk-group");
+    const deskPhone = $("#desk-phone");
+    const leadAlert = $("#lead-alert");
+    const weekCount = $("#week-count");
+    const endCard = $("#end-card");
+    const offerCard = $("#offer-card");
+    const captions = $$(".caption");
+
+    let currentStep = -1;
+    let autoTimer, revealTimer, pendingReveal;
+
+    function clearTimers() {
+      clearTimeout(autoTimer); clearTimeout(revealTimer);
+      autoTimer = revealTimer = pendingReveal = undefined;
+    }
+    function showCaption(id) {
+      captions.forEach((c) => c.classList.toggle("visible", c.id === id));
+    }
+    function scheduleNext() {
+      if (!AUTO) return;
+      clearTimeout(autoTimer);
+      const from = currentStep;
+      if (from >= STEPS.length - 1) return;
+      autoTimer = setTimeout(() => { if (currentStep === from) renderStep(from + 1); }, HOLDS[from] || 5000);
+    }
+    function revealMessage() {
+      if (!pendingReveal) return false;
+      clearTimeout(revealTimer);
+      const r = pendingReveal; pendingReveal = undefined;
+      r.typing.classList.remove("play");
+      r.message.classList.add("visible");
+      scheduleNext();
+      return true;
+    }
+    function showMessage(msgId, typingId, instant) {
+      const message = $(msgId), typing = $(typingId);
+      if (instant) { typing.classList.remove("play"); message.classList.add("visible"); return false; }
+      typing.classList.add("play");
+      pendingReveal = { message, typing };
+      revealTimer = setTimeout(revealMessage, 1700);
+      return true;
+    }
+
+    const STEPS = [
+      { apply({ instant }) { showCaption("caption-wake"); return showMessage("#wakeup-text", "#typing-practice", instant); } },
+      { apply({ instant }) { showCaption("caption-reply"); return showMessage("#patient-reply", "#typing-patient", instant); } },
+      { apply({ instant }) { showCaption("caption-answer"); return showMessage("#answer-text", "#typing-practice", instant); } },
+      { apply({ instant }) { showCaption("caption-book"); return showMessage("#patient-books", "#typing-patient", instant); } },
+      { apply({ instant }) { return showMessage("#confirm-text", "#typing-practice", instant); } },
+      { apply() {
+          patientGroup.classList.add("inactive");
+          deskGroup.classList.remove("inactive");
+          deskPhone.classList.add("buzz");
+          leadAlert.classList.add("visible");
+          showCaption("caption-desk");
+          return false;
+        } },
+      { apply() { weekCount.classList.add("visible"); return false; } },
+      { apply() { offerCard.classList.remove("visible"); endCard.classList.add("visible"); return false; } },
+      { apply() { endCard.classList.add("visible"); offerCard.classList.add("visible"); return false; } }
+    ];
+
+    function applyPlaceholders() {
+      $$("[data-practice-name]").forEach((n) => { n.textContent = DEMO.practiceName; });
+      const initials = DEMO.practiceName.trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+      $$("[data-practice-initials]").forEach((n) => { n.textContent = initials; });
+      $("#answer-text").innerHTML = $("#answer-text").innerHTML.replace("{{checkupPrice}}", DEMO.checkupPrice);
+    }
+
+    function resetVisuals() {
+      window.scrollTo(0, 0);
+      endCard.classList.remove("visible");
+      offerCard.classList.remove("visible");
+      $$(".bubble").forEach((b) => b.classList.remove("visible"));
+      $$(".typing-bubble").forEach((t) => t.classList.remove("play"));
+      patientGroup.classList.remove("inactive");
+      deskGroup.classList.add("inactive");
+      deskPhone.classList.remove("buzz");
+      leadAlert.classList.remove("visible");
+      weekCount.classList.remove("visible");
+      showCaption("caption-list");
+    }
+
+    function resetDemo() {
+      clearTimers();
+      currentStep = -1;
+      demoStage.dataset.currentStep = "-1";
+      replay.classList.remove("available");
+      intro.classList.remove("hidden");
+      demoStage.classList.remove("active");
+      resetVisuals();
+    }
+
+    function renderStep(index, instant = false) {
+      clearTimers();
+      currentStep = index;
+      demoStage.dataset.currentStep = String(index);
+      const waits = STEPS[index].apply({ instant });
+      if (!instant && !waits) scheduleNext();
+    }
+
+    function startSequence() {
+      if (intro.classList.contains("hidden")) return;
+      intro.classList.add("hidden");
+      demoStage.classList.add("active");
+      replay.classList.add("available");
+      if (AUTO) { autoTimer = setTimeout(() => renderStep(0), 1200); }
+    }
+
+    function advance() {
+      if (!intro.classList.contains("hidden")) { startSequence(); if (!AUTO) return; return; }
+      if (revealMessage()) return;
+      if (currentStep >= STEPS.length - 1) return;
+      renderStep(currentStep + 1);
+    }
+
+    function rewind() {
+      if (!intro.classList.contains("hidden") || currentStep <= 0) return;
+      clearTimers();
+      const target = currentStep - 1;
+      resetVisuals();
+      for (let i = 0; i <= target; i += 1) { currentStep = i; STEPS[i].apply({ instant: true }); }
+      currentStep = target;
+      demoStage.dataset.currentStep = String(target);
+    }
+
+    intro.addEventListener("click", startSequence);
+    replay.addEventListener("click", resetDemo);
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "ArrowRight") { e.preventDefault(); advance(); }
+      else if (e.code === "ArrowLeft") { e.preventDefault(); rewind(); }
+      else if (e.code === "Enter" && !intro.classList.contains("hidden")) { e.preventDefault(); startSequence(); }
+    });
+    if (AUTO) { setTimeout(startSequence, 1600); }
+
+    applyPlaceholders();
+    resetDemo();
+  </script>
+</body>
+</html>
