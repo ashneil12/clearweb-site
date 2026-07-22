@@ -210,9 +210,16 @@
     links[i].addEventListener("click", function () { track("book_click"); });
   }
 
-  /* Fires as they leave, so you always get the furthest point they reached. */
-  window.addEventListener("pagehide", function () {
+  /* Drop-off: report the furthest point reached when they go.
+     pagehide alone misses the common mobile case of switching apps mid-video,
+     so visibilitychange is wired up too. Both are safe to double-fire because
+     track() dedupes on event+percent. */
+  function leaveBeacon() {
     if (best > 0) track("video_left_at", best);
+  }
+  window.addEventListener("pagehide", leaveBeacon);
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") leaveBeacon();
   });
 })();
 
