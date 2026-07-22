@@ -116,6 +116,58 @@
 </div>
 
 <script>
+/* First-party engagement tracking. Cookieless, no third party, nothing personal stored.
+   Tag a link per prospect like clearweb.one/demo?r=matt-premier and the events say who. */
+(function () {
+  var ref = "direct";
+  try {
+    var qs = new URLSearchParams(location.search);
+    ref = (qs.get("r") || qs.get("ref") || "direct").slice(0, 40);
+  } catch (e) {}
+
+  var sent = {};
+  function track(ev, pct) {
+    var key = ev + "|" + (pct == null ? "" : pct);
+    if (sent[key]) return;
+    sent[key] = 1;
+    var u = "/api/t?e=" + encodeURIComponent(ev) + "&r=" + encodeURIComponent(ref) +
+            (pct == null ? "" : "&p=" + pct);
+    try {
+      if (navigator.sendBeacon) navigator.sendBeacon(u);
+      else fetch(u, { method: "POST", keepalive: true });
+    } catch (e) {}
+  }
+  window.cwTrack = track;
+
+  track("page_view");
+
+  var v = document.querySelector("video");
+  var best = 0;
+  if (v) {
+    v.addEventListener("play", function () { track("video_play"); });
+    v.addEventListener("timeupdate", function () {
+      if (!v.duration) return;
+      var pct = Math.floor((v.currentTime / v.duration) * 100);
+      if (pct > best) best = pct;
+      var marks = [10, 25, 50, 75, 90];
+      for (var i = 0; i < marks.length; i++) {
+        if (pct >= marks[i]) track("video_" + marks[i], marks[i]);
+      }
+    });
+    v.addEventListener("ended", function () { track("video_complete", 100); });
+  }
+
+  var links = document.querySelectorAll('a[href*="cal.com"]');
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function () { track("book_click"); });
+  }
+
+  /* Fires as they leave, so you always get the furthest point they reached. */
+  window.addEventListener("pagehide", function () {
+    if (best > 0) track("video_left_at", best);
+  });
+})();
+
 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init", "chat", { origin: "https://cal.com" });
 Cal.ns.chat("inline", {
@@ -124,6 +176,12 @@ Cal.ns.chat("inline", {
   calLink: "clearwebone/chat"
 });
 Cal.ns.chat("ui", { hideEventTypeDetails: false, layout: "month_view", theme: "light", hideBranding: true });
+
+/* The highest-value event: someone actually booked off the page. */
+Cal.ns.chat("on", {
+  action: "bookingSuccessful",
+  callback: function () { if (window.cwTrack) window.cwTrack("booking_confirmed"); }
+});
 
 // Drop the fallback message once the real calendar renders.
 (function () {
